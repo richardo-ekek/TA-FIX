@@ -23,8 +23,9 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        'google_id', // Tambahkan baris ini
+        'google_id',
         'totp_secret',
+        'foto_profil', 
     ];
 
     /**

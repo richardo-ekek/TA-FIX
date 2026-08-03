@@ -9,9 +9,10 @@ class Appointment extends Model
 {
     use HasFactory;
 
-    // INI ADALAH KUNCI PERIZINANNYA (MASS ASSIGNMENT)
     protected $fillable = [
         'user_id', 
+        'tipe_pemohon',
+        'admin_id',
         'nama', 
         'instansi', 
         'alamat', 
@@ -23,17 +24,21 @@ class Appointment extends Model
         'link_meeting', 
         'alamat_pertemuan', 
         'tanggal_waktu_pertemuan',
-
-        // Tambahan Baru:
         'keterangan_tambahan', 
         'link_maps', 
         'detail_alamat_pertemuan', 
         'alasan_penolakan'
     ];
 
-    // Relasi balik ke tabel Users
+    // Relasi balik ke tabel Users (Untuk mengetahui User/Pemohon)
     public function user() 
     {
         return $this->belongsTo(User::class);
+    }
+
+    // Relasi untuk mengetahui Admin siapa yang memproses/menyetujui janji temu ini
+    public function admin()
+    {
+        return $this->belongsTo(User::class, 'admin_id');
     }
 }

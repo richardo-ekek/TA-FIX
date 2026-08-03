@@ -15,7 +15,7 @@ use App\Models\Berita;
 
 class AdminController extends Controller
 {
-    // 1. FUNGSI UTAMA SPA (Memuat Semua Data)
+    // 1. FUNGSI UTAMA SPA (Memuat Semua Data & Grafik)
     public function index()
     {
         $appointments = Appointment::orderBy('created_at', 'desc')->get();
@@ -24,17 +24,48 @@ class AdminController extends Controller
                     ->whereNotNull('tanggal_waktu_pertemuan')
                     ->orderBy('tanggal_waktu_pertemuan', 'asc')
                     ->get();
-        $mou = MouPks::all()->map(function($i) { $i->tipe_dokumen = 'MoU/PKS'; $i->judul = $i->perihal; return $i; });
-        $tikKemlu = TikKemlu::all()->map(function($i) { $i->tipe_dokumen = 'TIK Kemlu'; $i->judul = $i->perihal; return $i; });
-        $tikNon = TikNonKemlu::all()->map(function($i) { $i->tipe_dokumen = 'TIK Non-Kemlu'; $i->judul = $i->perihal; return $i; });
         
+        $mou = MouPks::with('admin')->get()->map(function($i) { 
+            $i->tipe_dokumen = 'MoU/PKS'; 
+            $i->kategori_param = 'mou'; 
+            $i->judul = $i->perihal; 
+            return $i; 
+        });
+        
+        $tikKemlu = TikKemlu::with('admin')->get()->map(function($i) { 
+            $i->tipe_dokumen = 'TIK Kemlu'; 
+            $i->kategori_param = 'tik_kemlu'; 
+            $i->judul = $i->perihal; 
+            return $i; 
+        });
+        
+        $tikNon = TikNonKemlu::with('admin')->get()->map(function($i) { 
+            $i->tipe_dokumen = 'TIK Non-Kemlu'; 
+            $i->kategori_param = 'tik_non_kemlu'; 
+            $i->judul = $i->perihal; 
+            return $i; 
+        });
+
         $allKebijakan = $mou->concat($tikKemlu)->concat($tikNon)->sortByDesc('created_at');
-        // DATA BARU: Ambil riwayat berita milik Admin yang sedang login
-        $riwayatBerita = Berita::where('admin_id', Auth::id())->orderBy('created_at', 'desc')->get();
-        return view('admin.appointment', compact('appointments', 'jadwals', 'allKebijakan', 'riwayatBerita'));
+        $riwayatBerita = Berita::with('admin')->where('admin_id', Auth::id())->orderBy('created_at', 'desc')->get();
+
+        // ==========================================
+        // DATA UNTUK VISUALISASI CHART.JS (VIEWS)
+        // ==========================================
+        $chartViews = [
+            'labels' => ['Berita', 'MoU / PKS', 'TIK Kemlu', 'TIK Non-Kemlu'],
+            'data' => [
+                Berita::sum('views'),
+                MouPks::sum('views'),
+                TikKemlu::sum('views'),
+                TikNonKemlu::sum('views')
+            ]
+        ];
+
+        return view('admin.appointment', compact('appointments', 'jadwals', 'allKebijakan', 'riwayatBerita', 'chartViews'));
     }
 
-    // 2. FUNGSI SIMPAN BERITA
+    // 2. FUNGSI SIMPAN BERITA (Baru)
     public function storeBerita(Request $request)
     {
         $request->validate([
@@ -46,10 +77,11 @@ class AdminController extends Controller
             'lead'     => 'required|string',
             'body'     => 'required|string',
         ]);
+        
         $pathFoto = $request->file('foto')->store('berita_foto', 'public');
 
         Berita::create([
-            'admin_id' => Auth::id(),
+            'admin_id' => Auth::id(), 
             'kategori' => $request->kategori,
             'foto'     => $pathFoto,
             'judul'    => $request->judul,
@@ -59,8 +91,39 @@ class AdminController extends Controller
             'body'     => $request->body,
             'closing'  => $request->closing,
             'status'   => 'pending', 
+            'revisi_ke' => 0,
         ]);
+        
         return redirect()->back()->with('success', 'Draf Berita berhasil diajukan!');
+    }
+
+    // FUNGSI UPDATE BERITA (Menimpa Draf Lama Saat Direvisi Admin)
+    public function updateBerita(Request $request, $id)
+    {
+        $berita = Berita::findOrFail($id);
+        
+        $request->validate([
+            'kategori' => 'required|in:Dalam Negeri,Mancanegara,Kerjasama',
+            'foto'     => 'nullable|image|mimes:jpeg,png,jpg|max:2048', 
+            'judul'    => 'required|string|max:255',
+            'tanggal'  => 'required|date',
+            'lokasi'   => 'required|string|max:255',
+            'lead'     => 'required|string',
+            'body'     => 'required|string',
+        ]);
+        
+        $data = $request->except(['_token', '_method']);
+        if ($request->hasFile('foto')) {
+            $data['foto'] = $request->file('foto')->store('berita_foto', 'public');
+        }
+        
+        $data['status'] = 'pending'; // Kembalikan status untuk ditinjau ulang
+        $data['alasan_penolakan'] = null; // Bersihkan pesan error merah
+        // Catatan: revisi_ke dan riwayat_revisi TIDAK DIHAPUS agar jejaknya tetap ada
+        
+        $berita->update($data);
+        
+        return redirect()->back()->with('success', 'Berita berhasil direvisi dan diajukan ulang!');
     }
 
     // 3. FUNGSI UPDATE STATUS JANJI TEMU
@@ -69,13 +132,14 @@ class AdminController extends Controller
         $appointment = Appointment::with('user')->findOrFail($id);
         
         $appointment->update([
-            'status' => $request->status,
+            'admin_id'                => Auth::id(), 
+            'status'                  => $request->status,
             'tanggal_waktu_pertemuan' => $request->tanggal_waktu_pertemuan,
-            'link_meeting' => $request->link_meeting,
-            'alamat_pertemuan' => $request->alamat_pertemuan,
-            'link_maps' => $request->link_maps,                     // Menyimpan link Google Maps
-            'keterangan_tambahan' => $request->keterangan_tambahan, // Menyimpan catatan dari admin
-            'alasan_penolakan' => $request->alasan_penolakan,
+            'link_meeting'            => $request->link_meeting,
+            'alamat_pertemuan'        => $request->alamat_pertemuan,
+            'link_maps'               => $request->link_maps,                     
+            'keterangan_tambahan'     => $request->keterangan_tambahan, 
+            'alasan_penolakan'        => $request->alasan_penolakan,
         ]);
 
         if ($appointment->user && $appointment->user->email) {
@@ -85,38 +149,66 @@ class AdminController extends Controller
         return back()->with('success', 'Status & Jadwal berhasil diperbarui!');
     }
 
-    // 4. FUNGSI SIMPAN KEBIJAKAN
+    // 4. FUNGSI SIMPAN KEBIJAKAN (Baru)
     public function storeMou(Request $request) 
     {
-        MouPks::create($request->all());
-        return redirect()->back()->with('success', 'Draf MoU/PKS berhasil diajukan!');
+        $data = $request->all();
+        $data['admin_id'] = Auth::id();
+        $data['status'] = 'pending_hukum'; 
+        $data['revisi_ke'] = 0;
+        MouPks::create($data);
+        return redirect()->back()->with('success', 'Draf MoU/PKS berhasil diajukan ke Tim Hukum!');
     }
 
     public function storeTikKemlu(Request $request) 
     {
         TikKemlu::create([
+            'admin_id'        => Auth::id(),
             'jenis_kebijakan' => $request->jenis_kebijakan, 
             'nomor_kebijakan' => $request->nomor_kebijakan, 
-            'tahun' => $request->tahun, 
-            'perihal' => $request->perihal, 
-            'tautan' => $request->tautan, 
-            'status' => 'pending'
+            'tahun'           => $request->tahun, 
+            'perihal'         => $request->perihal, 
+            'tautan'          => $request->tautan, 
+            'status'          => 'pending_hukum',
+            'revisi_ke'       => 0,
         ]);
-        return redirect()->back()->with('success', 'Draf TIK Kemlu berhasil diajukan!');
+        return redirect()->back()->with('success', 'Draf TIK Kemlu berhasil diajukan ke Tim Hukum!');
     }
 
     public function storeTikNonKemlu(Request $request) 
     {
         TikNonKemlu::create([
+            'admin_id'        => Auth::id(),
             'jenis_kebijakan' => $request->jenis_kebijakan, 
             'nomor_kebijakan' => $request->nomor_kebijakan, 
-            'tahun' => $request->tahun, 
-            'perihal' => $request->perihal, 
-            'instansi' => $request->instansi, 
-            'tautan' => $request->tautan, 
-            'status' => 'pending'
+            'tahun'           => $request->tahun, 
+            'perihal'         => $request->perihal, 
+            'instansi'        => $request->instansi, 
+            'tautan'          => $request->tautan, 
+            'status'          => 'pending_hukum',
+            'revisi_ke'       => 0,
         ]);
-        return redirect()->back()->with('success', 'Draf TIK Non-Kemlu berhasil diajukan!');
+        return redirect()->back()->with('success', 'Draf TIK Non-Kemlu berhasil diajukan ke Tim Hukum!');
+    }
+
+    // FUNGSI UPDATE KEBIJAKAN DINAMIS (Menimpa Draf Lama Saat Direvisi Admin)
+    public function updateKebijakan(Request $request, $kategori, $id)
+    {
+        $kebijakan = match($kategori) {
+            'mou' => MouPks::findOrFail($id),
+            'tik_kemlu' => TikKemlu::findOrFail($id),
+            'tik_non_kemlu' => TikNonKemlu::findOrFail($id),
+            default => abort(404),
+        };
+
+        $data = $request->except(['_token', '_method']);
+        $data['status'] = 'pending_hukum'; // Naik kembali ke Tim Hukum
+        $data['alasan_penolakan'] = null; // Bersihkan pesan error lama
+        // Catatan: revisi_ke dan riwayat_revisi TIDAK DIHAPUS agar jejaknya tetap ada
+        
+        $kebijakan->update($data);
+
+        return redirect()->back()->with('success', 'Dokumen kebijakan berhasil direvisi dan diajukan ulang ke Tim Hukum!');
     }
 
     // ==============================================
@@ -174,17 +266,13 @@ class AdminController extends Controller
         }
     }
 
-    /**
-     * UPDATE: Fungsi Radar Global dengan Pencarian Dinamis
-     */
     public function radarGlobalApi(Request $request)
     {
         try {
-            // 1. Tangkap kata kunci dari form pencarian, jika kosong gunakan default
             $keyword = $request->input('q', 'Indonesia foreign policy OR Kemenlu OR diplomasi');
             $response = Http::withoutVerifying()->get('https://newsdata.io/api/1/news', [
                 'apikey'   => env('NEWSDATA_API_KEY'),
-                'q'        => $keyword, // 2. Keyword sekarang dinamis
+                'q'        => $keyword, 
                 'language' => 'en,id',
             ]);
             if ($response->successful()) {

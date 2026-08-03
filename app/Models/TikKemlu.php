@@ -9,7 +9,6 @@ class TikKemlu extends Model
 {
     use HasFactory;
 
-    // Memastikan Laravel membaca nama tabel yang tepat
     protected $table = 'tik_kemlu';
 
     protected $fillable = [
@@ -19,12 +18,32 @@ class TikKemlu extends Model
         'perihal', 
         'tautan', 
         'status',
-        // --- 2 Baris Izin Baru di Bawah Ini ---
         'alasan_penolakan',
-        'keterangan_tambahan'
+        'keterangan_tambahan',
+        'admin_id',
+        'tim_hukum_id',
+        'super_admin_id',
+        'file_berita_acara',
+        'views'
     ];
 
     public function logs() {
         return $this->morphMany(ActivityLog::class, 'model');
+    }
+
+    // --- Relasi ke Aktor (Admin, Tim Hukum, Super Admin) ---
+    public function admin()
+    {
+        return $this->belongsTo(User::class, 'admin_id');
+    }
+
+    public function timHukum()
+    {
+        return $this->belongsTo(User::class, 'tim_hukum_id');
+    }
+
+    public function superAdmin()
+    {
+        return $this->belongsTo(User::class, 'super_admin_id');
     }
 }

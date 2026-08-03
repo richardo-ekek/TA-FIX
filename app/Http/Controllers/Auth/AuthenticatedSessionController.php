@@ -7,8 +7,8 @@ use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Http; // Tambahan untuk reCAPTCHA
-use Illuminate\Validation\ValidationException; // Tambahan untuk reCAPTCHA
+use Illuminate\Support\Facades\Http;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
@@ -59,6 +59,8 @@ class AuthenticatedSessionController extends Controller
             return redirect()->intended('/super-admin/dashboard');
         } elseif ($role === 'admin') {
             return redirect()->intended('/admin/appointment');
+        } elseif ($role === 'tim_hukum') {
+            return redirect()->intended('/tim-hukum/dashboard'); // <-- TAMBAHAN WAJIB AGAR TIDAK ERROR 403
         }
 
         // Default untuk user biasa

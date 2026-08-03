@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Appointment;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Http; // Import library HTTP untuk verifikasi Google
+use Illuminate\Support\Facades\Http;
 
 class AppointmentController extends Controller
 {
@@ -18,16 +18,18 @@ class AppointmentController extends Controller
     // Menangkap data dari form dan menyimpan ke database
     public function store(Request $request)
     {
-        // 1. Validasi inputan (Termasuk reCAPTCHA)
+        // 1. Validasi inputan (Termasuk tipe_pemohon & reCAPTCHA)
         $request->validate([
+            'tipe_pemohon' => 'required|in:individu,institusi',
             'instansi' => 'required|string|max:255',
             'alamat' => 'required|string',
             'tujuan' => 'required|string|max:255',
             'detail_tujuan' => 'required|string',
             'mode' => 'required|in:daring,luring',
             'preferensi_waktu' => 'nullable|date',
-            'g-recaptcha-response' => 'required', // Wajib dicentang
+            'g-recaptcha-response' => 'required',
         ], [
+            'tipe_pemohon.required' => 'Silakan pilih kategori pemohon (Individu atau Institusi).',
             'g-recaptcha-response.required' => 'Silakan centang kotak reCAPTCHA untuk membuktikan Anda bukan robot.'
         ]);
 
@@ -38,7 +40,7 @@ class AppointmentController extends Controller
             'remoteip' => $request->ip()
         ]);
 
-        // 3. Jika Google bilang itu Bot atau gagal divalidasi
+        // 3. Jika Google menyatakan itu Bot atau gagal divalidasi
         if (!$response->json('success')) {
             return back()->withErrors(['g-recaptcha-response' => 'Validasi reCAPTCHA gagal, silakan coba lagi.'])->withInput();
         }
@@ -46,7 +48,7 @@ class AppointmentController extends Controller
         // 4. Jika lolos verifikasi, Simpan ke database menggunakan Model
         Appointment::create([
             'user_id' => Auth::id(),
-            // Logika: Jika name kosong, ambil dari nama depan email
+            'tipe_pemohon' => $request->tipe_pemohon,
             'nama' => Auth::user()->name ?? explode('@', Auth::user()->email)[0], 
             'instansi' => $request->instansi,
             'alamat' => $request->alamat,

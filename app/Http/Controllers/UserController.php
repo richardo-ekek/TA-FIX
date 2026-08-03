@@ -7,7 +7,7 @@ use App\Models\Appointment;
 use App\Models\MouPks; 
 use App\Models\TikKemlu;
 use App\Models\TikNonKemlu;
-use App\Models\Berita; // Jangan lupa panggil model Berita
+use App\Models\Berita; 
 
 class UserController extends Controller
 {
@@ -38,12 +38,34 @@ class UserController extends Controller
         
         $allKebijakan = $mou->concat($tikKemlu)->concat($tikNon)->sortByDesc('created_at');
 
-        // 3. DATA BARU: Ambil Berita yang sudah disetujui (Approved)
+        // 3. Ambil Berita yang sudah disetujui (Approved)
         $beritaList = Berita::with('admin')
                         ->where('status', 'approved')
                         ->orderBy('tanggal', 'desc')
                         ->get();
 
         return view('user.dashboard', compact('appointments', 'allKebijakan', 'beritaList'));
+    }
+
+    /**
+     * FUNGSI BARU: Mencatat jumlah Views saat User membaca Berita / Kebijakan
+     */
+    public function recordView(Request $request)
+    {
+        $id = $request->id;
+        $tipe = $request->tipe_dokumen; 
+
+        // Logika penambahan angka views (+1) langsung ke database
+        if ($tipe === 'Berita') {
+            Berita::where('id', $id)->increment('views');
+        } elseif ($tipe === 'MoU/PKS') {
+            MouPks::where('id', $id)->increment('views');
+        } elseif ($tipe === 'TIK Kemlu') {
+            TikKemlu::where('id', $id)->increment('views');
+        } elseif ($tipe === 'TIK Non-Kemlu') {
+            TikNonKemlu::where('id', $id)->increment('views');
+        }
+
+        return response()->json(['success' => true]);
     }
 }
