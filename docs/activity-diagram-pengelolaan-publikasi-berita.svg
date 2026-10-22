@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3300" height="2880" viewBox="0 0 3300 2880" role="img" aria-labelledby="diagram-title diagram-desc">
+  <title id="diagram-title">Activity Diagram — Pengelolaan dan Publikasi Berita</title>
+  <desc id="diagram-desc">Diagram aktivitas Admin dalam membuat dan merevisi berita, Super Admin dalam melakukan review, serta Sistem dalam mempublikasikan berita approved pada Portal User.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#1e293b"/>
+    </marker>
+    <style>
+      .frame { fill:#ffffff; stroke:#1e293b; stroke-width:3; }
+      .titlebar { fill:#f97316; stroke:#1e293b; stroke-width:3; }
+      .lanehead { fill:#f8fafc; stroke:#1e293b; stroke-width:3; }
+      .adminlane { fill:#fffdf9; stroke:#cbd5e1; stroke-width:2; }
+      .superlane { fill:#fcfbff; stroke:#cbd5e1; stroke-width:2; }
+      .systemlane { fill:#f8fbff; stroke:#cbd5e1; stroke-width:2; }
+      .adminnode { fill:#ffffff; stroke:#475569; stroke-width:3; }
+      .supernode { fill:#f5f3ff; stroke:#7c3aed; stroke-width:3; }
+      .systemnode { fill:#eff6ff; stroke:#2563eb; stroke-width:3; }
+      .approvednode { fill:#ecfdf5; stroke:#059669; stroke-width:3; }
+      .revisionnode { fill:#fff7ed; stroke:#d97706; stroke-width:3; }
+      .rejectnode { fill:#fff1f2; stroke:#e11d48; stroke-width:3; }
+      .notenode { fill:#fffbeb; stroke:#d97706; stroke-width:2.5; }
+      .node { rx:16; ry:16; }
+      .decision { fill:#ffffff; stroke:#334155; stroke-width:3; }
+      .flow { fill:none; stroke:#1e293b; stroke-width:3.5; marker-end:url(#arrow); stroke-linejoin:round; stroke-linecap:round; }
+      .loop { fill:none; stroke:#2563eb; stroke-width:3.5; stroke-dasharray:12 10; marker-end:url(#arrow); stroke-linejoin:round; stroke-linecap:round; }
+      .title { font-family:Arial, Helvetica, sans-serif; font-size:38px; font-weight:700; fill:#ffffff; text-anchor:middle; }
+      .lane-title { font-family:Arial, Helvetica, sans-serif; font-size:29px; font-weight:700; fill:#0f172a; text-anchor:middle; }
+      .body { font-family:Arial, Helvetica, sans-serif; font-size:21px; font-weight:600; fill:#0f172a; text-anchor:middle; }
+      .small { font-family:Arial, Helvetica, sans-serif; font-size:18px; font-weight:600; fill:#0f172a; text-anchor:middle; }
+      .branch { font-family:Arial, Helvetica, sans-serif; font-size:18px; font-weight:700; }
+      .approve { fill:#047857; }
+      .revise { fill:#b45309; }
+      .reject { fill:#be123c; }
+      .foot { font-family:Arial, Helvetica, sans-serif; font-size:16px; fill:#334155; }
+    </style>
+  </defs>
+
+  <!-- Page and vertical swimlanes -->
+  <rect class="frame" x="15" y="15" width="3270" height="2850"/>
+  <rect class="titlebar" x="15" y="15" width="3270" height="88"/>
+  <text class="title" x="1650" y="72">ACTIVITY DIAGRAM — PENGELOLAAN &amp; PUBLIKASI BERITA</text>
+  <rect class="lanehead" x="15" y="103" width="865" height="64"/>
+  <rect class="lanehead" x="880" y="103" width="890" height="64"/>
+  <rect class="lanehead" x="1770" y="103" width="1515" height="64"/>
+  <text class="lane-title" x="447" y="144">Admin</text>
+  <text class="lane-title" x="1325" y="144">Super Admin</text>
+  <text class="lane-title" x="2527" y="144">Sistem / Portal User</text>
+  <rect class="adminlane" x="15" y="167" width="865" height="2620"/>
+  <rect class="superlane" x="880" y="167" width="890" height="2620"/>
+  <rect class="systemlane" x="1770" y="167" width="1515" height="2620"/>
+
+  <!-- Admin creates a news draft -->
+  <circle cx="95" cy="245" r="22" fill="#111827"/>
+  <line class="flow" x1="117" y1="245" x2="155" y2="245"/>
+  <rect class="adminnode node" x="160" y="198" width="500" height="94"/>
+  <text class="body" x="410" y="234"><tspan x="410">Akses dashboard Admin</tspan><tspan x="410" dy="26">menu Tulis Berita Baru</tspan></text>
+  <path class="flow" d="M410 292 V355"/>
+  <rect class="adminnode node" x="90" y="355" width="640" height="165"/>
+  <text class="small" x="410" y="386"><tspan x="410">Isi kategori, foto, judul, tanggal, lokasi, lead, body,</tspan><tspan x="410" dy="25">dan closing opsional. Kategori: Dalam Negeri,</tspan><tspan x="410" dy="25">Mancanegara, atau Kerjasama.</tspan><tspan x="410" dy="25">Opsional: terjemahkan body / buat lead melalui Groq AI.</tspan></text>
+  <path class="flow" d="M410 520 V580"/>
+  <rect class="adminnode node" x="160" y="580" width="500" height="86"/>
+  <text class="body" x="410" y="633">Unggah draf ke Super Admin</text>
+
+  <path class="flow" d="M660 623 H2100"/>
+  <rect class="systemnode node" x="2100" y="550" width="800" height="120"/>
+  <text class="body" x="2500" y="584"><tspan x="2500">Validasi kategori, isi berita, dan foto wajib</tspan><tspan x="2500" dy="26">JPEG/PNG/JPG maksimal 2 MB;</tspan><tspan x="2500" dy="26">simpan foto ke storage publik</tspan></text>
+  <path class="flow" d="M2500 670 V730"/>
+  <rect class="systemnode node" x="2100" y="730" width="800" height="100"/>
+  <text class="body" x="2500" y="765"><tspan x="2500">Buat Berita dengan admin_id dan status = pending;</tspan><tspan x="2500" dy="26">tampilkan pesan draf berhasil diajukan</tspan></text>
+
+  <!-- Super Admin receives the draft -->
+  <path class="flow" d="M2100 780 H1720 V905 H1620"/>
+  <rect class="supernode node" x="1020" y="855" width="600" height="100"/>
+  <text class="body" x="1320" y="891"><tspan x="1320">Pilih berita pending dan tinjau</tspan><tspan x="1320" dy="26">foto, metadata, serta isi artikel</tspan></text>
+  <path class="flow" d="M1320 955 V1025"/>
+  <polygon class="decision" points="1320,1025 1460,1095 1320,1165 1180,1095"/>
+  <text class="small" x="1320" y="1088"><tspan x="1320">Keputusan</tspan><tspan x="1320" dy="23">publikasi?</tspan></text>
+
+  <!-- Approved/published branch -->
+  <text class="branch approve" x="1490" y="1077">[Setujui Publikasi]</text>
+  <path class="flow" d="M1460 1095 H2100"/>
+  <rect class="approvednode node" x="2100" y="1035" width="800" height="125"/>
+  <text class="body" x="2500" y="1070"><tspan x="2500">Perbarui berita: status = approved</tspan><tspan x="2500" dy="26">dan alasan_penolakan = null;</tspan><tspan x="2500" dy="26">tampilkan pesan publikasi berhasil</tspan></text>
+  <path class="flow" d="M2500 1160 V1220"/>
+  <rect class="approvednode node" x="2100" y="1220" width="800" height="110"/>
+  <text class="body" x="2500" y="1255"><tspan x="2500">Portal User mengambil Berita dengan</tspan><tspan x="2500" dy="26">status approved dan menampilkan kartu berita</tspan><tspan x="2500" dy="26">beserta foto, kategori, lead, dan detail</tspan></text>
+  <path class="flow" d="M2500 1330 V1390"/>
+  <rect class="systemnode node" x="2100" y="1390" width="800" height="100"/>
+  <text class="body" x="2500" y="1426"><tspan x="2500">Saat artikel dibuka, endpoint record-view</tspan><tspan x="2500" dy="26">menambah penghitung views berita</tspan></text>
+  <path class="flow" d="M2500 1490 V1535"/>
+  <circle cx="2500" cy="1575" r="29" fill="#ffffff" stroke="#111827" stroke-width="4"/>
+  <circle cx="2500" cy="1575" r="19" fill="#111827"/>
+
+  <!-- Revision branch -->
+  <text class="branch revise" x="1360" y="1195">[Minta Revisi]</text>
+  <path class="flow" d="M1320 1165 V1500"/>
+  <rect class="supernode node" x="1020" y="1500" width="600" height="100"/>
+  <text class="body" x="1320" y="1536"><tspan x="1320">Pilih Minta Revisi dan isi</tspan><tspan x="1320" dy="26">catatan perbaikan untuk Admin</tspan></text>
+  <path class="flow" d="M1620 1550 H1900 V1725 H2100"/>
+  <rect class="revisionnode node" x="2100" y="1660" width="800" height="130"/>
+  <text class="body" x="2500" y="1694"><tspan x="2500">Perbarui status = revisi dan simpan</tspan><tspan x="2500" dy="26">alasan_penolakan; tampilkan pesan</tspan><tspan x="2500" dy="26">berita dikembalikan kepada Admin</tspan></text>
+
+  <!-- Admin correction and resubmission -->
+  <path class="flow" d="M2100 1725 H1800 V1950 H730"/>
+  <rect class="adminnode node" x="100" y="1900" width="630" height="100"/>
+  <text class="body" x="415" y="1936"><tspan x="415">Lihat status serta catatan revisi</tspan><tspan x="415" dy="26">pada riwayat berita</tspan></text>
+  <path class="flow" d="M415 2000 V2060"/>
+  <rect class="adminnode node" x="90" y="2060" width="650" height="140"/>
+  <text class="small" x="415" y="2093"><tspan x="415">Buka Revisi Berita Secara Penuh, perbaiki seluruh data,</tspan><tspan x="415" dy="25">dan unggah foto baru bila diperlukan</tspan><tspan x="415" dy="25">(foto lama tetap dipakai bila tidak diubah).</tspan></text>
+  <path class="flow" d="M415 2200 V2260"/>
+  <rect class="adminnode node" x="160" y="2260" width="500" height="86"/>
+  <text class="body" x="410" y="2313">Simpan &amp; Ajukan Ulang</text>
+  <path class="flow" d="M660 2303 H2100"/>
+  <rect class="systemnode node" x="2100" y="2235" width="800" height="130"/>
+  <text class="body" x="2500" y="2269"><tspan x="2500">Validasi data revisi dan perbarui record lama;</tspan><tspan x="2500" dy="26">status kembali menjadi pending, alasan lama dihapus,</tspan><tspan x="2500" dy="26">lalu draf masuk antrean review ulang</tspan></text>
+  <path class="loop" d="M2900 2300 H3150 V905 H1620"/>
+  <text class="branch" x="2965" y="1740" fill="#2563eb">Kembali ke review Super Admin</text>
+
+  <!-- Rejection branch: routed at far left, separated from the revision loop -->
+  <text class="branch reject" x="1045" y="1077">[Tolak]</text>
+  <path class="flow" d="M1180 1095 H35 V2480 H1020"/>
+  <rect class="supernode node" x="1020" y="2430" width="600" height="100"/>
+  <text class="body" x="1320" y="2466"><tspan x="1320">Pilih Tolak dan isi alasan</tspan><tspan x="1320" dy="26">penolakan wajib pada form UI</tspan></text>
+  <path class="flow" d="M1620 2480 H2100"/>
+  <rect class="rejectnode node" x="2100" y="2415" width="800" height="130"/>
+  <text class="body" x="2500" y="2449"><tspan x="2500">Perbarui status = rejected dan simpan</tspan><tspan x="2500" dy="26">alasan_penolakan; tampilkan pesan</tspan><tspan x="2500" dy="26">berita ditolak</tspan></text>
+  <path class="flow" d="M2500 2545 V2590"/>
+  <circle cx="2500" cy="2630" r="29" fill="#ffffff" stroke="#111827" stroke-width="4"/>
+  <circle cx="2500" cy="2630" r="19" fill="#111827"/>
+
+  <!-- Implementation notes -->
+  <rect class="notenode node" x="930" y="2705" width="2210" height="78"/>
+  <text class="foot" x="2035" y="2737"><tspan x="2035" font-weight="700">Catatan implementasi:</tspan><tspan x="2035" dy="22"> Admin UI juga menyediakan revisi penuh untuk status rejected. Review berita hanya mengubah status dan alasan; tidak membuat Activity Log atau menaikkan riwayat revisi.</tspan></text>
+  <text class="foot" x="40" y="2840">Ruang lingkup: pengajuan, review, revisi, penolakan, dan publikasi berita pada Portal User.</text>
+</svg>

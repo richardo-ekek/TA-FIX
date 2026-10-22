@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2600" height="2220" viewBox="0 0 2600 2220" role="img" aria-labelledby="diagram-title diagram-desc">
+  <title id="diagram-title">Activity Diagram — Autentikasi Pengguna</title>
+  <desc id="diagram-desc">Diagram autentikasi Portal Layanan dengan swimlane Pengguna dan Sistem. Tiga alur independen—login manual, registrasi, dan Google SSO—bertemu pada pembuatan sesi dan pengalihan dashboard berdasarkan role.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#1e293b"/>
+    </marker>
+    <style>
+      .canvas { fill:#ffffff; stroke:#1e293b; stroke-width:3; }
+      .titlebar { fill:#f97316; stroke:#1e293b; stroke-width:3; }
+      .header { fill:#f8fafc; stroke:#1e293b; stroke-width:3; }
+      .user-lane { fill:#fffdf9; stroke:#cbd5e1; stroke-width:2; }
+      .system-lane { fill:#f8fbff; stroke:#cbd5e1; stroke-width:2; }
+      .user-node { fill:#ffffff; stroke:#475569; stroke-width:3; }
+      .system-node { fill:#eff6ff; stroke:#2563eb; stroke-width:3; }
+      .error-node { fill:#fff1f2; stroke:#e11d48; stroke-width:3; }
+      .role-node { fill:#ecfdf5; stroke:#059669; stroke-width:3; }
+      .note-node { fill:#fffbeb; stroke:#d97706; stroke-width:2.5; }
+      .node { rx:16; ry:16; }
+      .decision { fill:#ffffff; stroke:#334155; stroke-width:3; }
+      .flow { fill:none; stroke:#1e293b; stroke-width:3.5; marker-end:url(#arrow); stroke-linejoin:round; stroke-linecap:round; }
+      .soft-flow { fill:none; stroke:#94a3b8; stroke-width:2.5; stroke-dasharray:9 7; stroke-linejoin:round; stroke-linecap:round; }
+      .title { font-family:Arial, Helvetica, sans-serif; font-size:37px; font-weight:700; fill:#ffffff; text-anchor:middle; }
+      .lane-title { font-family:Arial, Helvetica, sans-serif; font-size:31px; font-weight:700; fill:#0f172a; text-anchor:middle; }
+      .body { font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:600; fill:#0f172a; text-anchor:middle; }
+      .small { font-family:Arial, Helvetica, sans-serif; font-size:19px; font-weight:600; fill:#0f172a; text-anchor:middle; }
+      .branch { font-family:Arial, Helvetica, sans-serif; font-size:20px; font-weight:700; fill:#1d4ed8; }
+      .yes { font-family:Arial, Helvetica, sans-serif; font-size:18px; font-weight:700; fill:#047857; }
+      .no { font-family:Arial, Helvetica, sans-serif; font-size:18px; font-weight:700; fill:#be123c; }
+      .foot { font-family:Arial, Helvetica, sans-serif; font-size:18px; fill:#334155; }
+    </style>
+  </defs>
+
+  <!-- Page frame and horizontal swimlanes -->
+  <rect class="canvas" x="15" y="15" width="2570" height="2190"/>
+  <rect class="titlebar" x="15" y="15" width="2570" height="88"/>
+  <text class="title" x="1300" y="72">ACTIVITY DIAGRAM — AUTENTIKASI PENGGUNA</text>
+  <rect class="header" x="15" y="103" width="2570" height="62"/>
+  <text class="lane-title" x="1300" y="144">Portal Layanan Kementerian Luar Negeri</text>
+  <rect class="user-lane" x="15" y="165" width="2570" height="355"/>
+  <rect class="system-lane" x="15" y="520" width="2570" height="1560"/>
+  <text class="lane-title" x="72" y="340" transform="rotate(-90 72 340)">Pengguna</text>
+  <text class="lane-title" x="72" y="1300" transform="rotate(-90 72 1300)">Sistem</text>
+  <line x1="120" y1="165" x2="120" y2="2080" stroke="#cbd5e1" stroke-width="2"/>
+
+  <!-- Opening sequence -->
+  <circle cx="175" cy="235" r="22" fill="#111827"/>
+  <line class="flow" x1="197" y1="235" x2="245" y2="235"/>
+  <rect class="user-node node" x="250" y="190" width="300" height="90"/>
+  <text class="body" x="400" y="225"><tspan x="400">Akses halaman</tspan><tspan x="400" dy="28">utama</tspan></text>
+  <path class="flow" d="M550 235 H610 V575 H1100"/>
+  <rect class="system-node node" x="1110" y="535" width="380" height="80"/>
+  <text class="body" x="1300" y="583">Tampilkan halaman login</text>
+  <path class="flow" d="M1300 535 V420"/>
+  <polygon class="decision" points="1300,260 1450,340 1300,420 1150,340"/>
+  <text class="body" x="1300" y="333"><tspan x="1300">Pilih metode</tspan><tspan x="1300" dy="27">autentikasi</tspan></text>
+
+  <!-- User choices: deliberately separate columns -->
+  <text class="branch" x="165" y="375">[Login manual]</text>
+  <path class="flow" d="M1150 340 H305 V395"/>
+  <rect class="user-node node" x="135" y="400" width="340" height="90"/>
+  <text class="body" x="305" y="433"><tspan x="305">Isi email, password,</tspan><tspan x="305" dy="27">dan reCAPTCHA</tspan></text>
+
+  <text class="branch" x="820" y="375">[Registrasi]</text>
+  <path class="flow" d="M1300 420 V395"/>
+  <rect class="user-node node" x="785" y="400" width="340" height="90"/>
+  <text class="body" x="955" y="433"><tspan x="955">Isi formulir</tspan><tspan x="955" dy="27">registrasi</tspan></text>
+
+  <text class="branch" x="1625" y="245">[Google SSO]</text>
+  <path class="flow" d="M1450 340 H1585 V315"/>
+  <rect class="user-node node" x="1590" y="270" width="410" height="90"/>
+  <text class="body" x="1795" y="323">Klik Login with Google</text>
+  <rect class="user-node node" x="1590" y="400" width="410" height="90"/>
+  <text class="body" x="1795" y="433"><tspan x="1795">Pilih akun dan beri</tspan><tspan x="1795" dy="27">persetujuan</tspan></text>
+
+  <!-- Manual-login column -->
+  <path class="flow" d="M305 490 V600"/>
+  <rect class="system-node node" x="135" y="605" width="340" height="88"/>
+  <text class="body" x="305" y="639"><tspan x="305">Verifikasi</tspan><tspan x="305" dy="27">reCAPTCHA</tspan></text>
+  <path class="flow" d="M305 693 V728"/>
+  <polygon class="decision" points="305,728 435,793 305,858 175,793"/>
+  <text class="small" x="305" y="786"><tspan x="305">reCAPTCHA</tspan><tspan x="305" dy="23">valid?</tspan></text>
+  <text class="no" x="456" y="776">[Tidak]</text>
+  <path class="flow" d="M435 793 H500"/>
+  <rect class="error-node node" x="510" y="748" width="245" height="90"/>
+  <text class="small" x="632" y="780"><tspan x="632">Pesan reCAPTCHA gagal;</tspan><tspan x="632" dy="23">kembali ke login</tspan></text>
+  <text class="yes" x="326" y="884">[Ya]</text>
+  <path class="flow" d="M305 858 V885"/>
+  <rect class="system-node node" x="135" y="890" width="340" height="88"/>
+  <text class="body" x="305" y="924"><tspan x="305">Validasi kredensial</tspan><tspan x="305" dy="27">di database</tspan></text>
+  <path class="flow" d="M305 978 V1013"/>
+  <polygon class="decision" points="305,1013 435,1078 305,1143 175,1078"/>
+  <text class="small" x="305" y="1071"><tspan x="305">Kredensial</tspan><tspan x="305" dy="23">valid?</tspan></text>
+  <text class="no" x="456" y="1061">[Tidak]</text>
+  <path class="flow" d="M435 1078 H500"/>
+  <rect class="error-node node" x="510" y="1033" width="245" height="90"/>
+  <text class="small" x="632" y="1065"><tspan x="632">Pesan kredensial salah;</tspan><tspan x="632" dy="23">kembali ke login</tspan></text>
+  <text class="yes" x="326" y="1168">[Ya]</text>
+  <path class="flow" d="M305 1143 V1445 H1170"/>
+
+  <!-- Registration column -->
+  <path class="flow" d="M955 490 V600"/>
+  <rect class="system-node node" x="785" y="605" width="340" height="88"/>
+  <text class="body" x="955" y="639"><tspan x="955">Validasi data</tspan><tspan x="955" dy="27">registrasi</tspan></text>
+  <path class="flow" d="M955 693 V728"/>
+  <polygon class="decision" points="955,728 1085,793 955,858 825,793"/>
+  <text class="small" x="955" y="786"><tspan x="955">Data</tspan><tspan x="955" dy="23">valid?</tspan></text>
+  <text class="no" x="1105" y="776">[Tidak]</text>
+  <path class="flow" d="M1085 793 H1150"/>
+  <rect class="error-node node" x="1160" y="748" width="270" height="90"/>
+  <text class="small" x="1295" y="780"><tspan x="1295">Tampilkan error;</tspan><tspan x="1295" dy="23">perbaiki formulir</tspan></text>
+  <text class="yes" x="976" y="884">[Ya]</text>
+  <path class="flow" d="M955 858 V885"/>
+  <rect class="system-node node" x="785" y="890" width="340" height="88"/>
+  <text class="body" x="955" y="924"><tspan x="955">Simpan akun baru</tspan><tspan x="955" dy="27">(role default: user)</tspan></text>
+  <path class="flow" d="M955 978 V1445 H1170"/>
+
+  <!-- Google SSO column: a local up-and-down loop, no crossing other columns -->
+  <path class="flow" d="M1590 315 H1515 V650 H1590"/>
+  <rect class="system-node node" x="1600" y="605" width="390" height="88"/>
+  <text class="body" x="1795" y="639"><tspan x="1795">Arahkan ke</tspan><tspan x="1795" dy="27">Google OAuth</tspan></text>
+  <path class="flow" d="M1990 649 H2050 V445 H2000"/>
+  <path class="flow" d="M2000 445 H2050 V935 H1990"/>
+  <rect class="system-node node" x="1600" y="890" width="390" height="88"/>
+  <text class="body" x="1795" y="924"><tspan x="1795">Proses callback dan</tspan><tspan x="1795" dy="27">validasi identitas Google</tspan></text>
+  <path class="flow" d="M1795 978 V1013"/>
+  <polygon class="decision" points="1795,1013 1925,1078 1795,1143 1665,1078"/>
+  <text class="small" x="1795" y="1071"><tspan x="1795">OAuth</tspan><tspan x="1795" dy="23">berhasil?</tspan></text>
+  <text class="no" x="1945" y="1061">[Tidak]</text>
+  <path class="flow" d="M1925 1078 H2010"/>
+  <rect class="error-node node" x="2020" y="1033" width="315" height="90"/>
+  <text class="small" x="2177" y="1065"><tspan x="2177">Tampilkan kegagalan login;</tspan><tspan x="2177" dy="23">kembali ke login</tspan></text>
+  <text class="yes" x="1817" y="1168">[Ya]</text>
+  <path class="flow" d="M1795 1143 V1175"/>
+  <polygon class="decision" points="1795,1175 1925,1240 1795,1305 1665,1240"/>
+  <text class="small" x="1795" y="1233"><tspan x="1795">Akun dengan email</tspan><tspan x="1795" dy="23">terdaftar?</tspan></text>
+  <text class="yes" x="1500" y="1225">[Ya]</text>
+  <path class="flow" d="M1665 1240 H1600 V1330"/>
+  <rect class="note-node node" x="1430" y="1335" width="340" height="94"/>
+  <text class="small" x="1600" y="1367"><tspan x="1600">Update akun yang ada:</tspan><tspan x="1600" dy="23">role menjadi user*</tspan></text>
+  <text class="no" x="1945" y="1225">[Tidak]</text>
+  <path class="flow" d="M1925 1240 H2045 V1330"/>
+  <rect class="system-node node" x="1880" y="1335" width="330" height="94"/>
+  <text class="small" x="2045" y="1367"><tspan x="2045">Buat akun otomatis</tspan><tspan x="2045" dy="23">(role: user)</tspan></text>
+
+  <!-- Merge and shared post-authentication flow -->
+  <polygon class="decision" points="1240,1375 1310,1445 1240,1515 1170,1445"/>
+  <text class="small" x="1240" y="1451">Gabung</text>
+  <path class="flow" d="M1600 1429 V1445 H1310"/>
+  <path class="flow" d="M2045 1429 V1445 H1310"/>
+  <path class="flow" d="M1240 1515 V1545"/>
+  <rect class="system-node node" x="1070" y="1550" width="340" height="80"/>
+  <text class="body" x="1240" y="1599">Buat sesi login</text>
+  <path class="flow" d="M1240 1630 V1660"/>
+  <rect class="system-node node" x="1070" y="1665" width="340" height="80"/>
+  <text class="body" x="1240" y="1714">Cek role pengguna</text>
+  <path class="flow" d="M1240 1745 V1780"/>
+  <polygon class="decision" points="1240,1780 1385,1850 1240,1920 1095,1850"/>
+  <text class="body" x="1240" y="1858">Role?</text>
+
+  <!-- Role-based dashboards -->
+  <text class="branch" x="250" y="1970">[super_admin]</text>
+  <path class="flow" d="M1095 1850 H420 V1980"/>
+  <rect class="role-node node" x="190" y="1985" width="460" height="80"/>
+  <text class="body" x="420" y="2035">Tampilkan dasbor Super Admin</text>
+
+  <text class="branch" x="920" y="1970">[admin]</text>
+  <path class="flow" d="M1170 1900 H920 V1980"/>
+  <rect class="role-node node" x="690" y="1985" width="460" height="80"/>
+  <text class="body" x="920" y="2035">Tampilkan halaman Admin Appointment</text>
+
+  <text class="branch" x="1590" y="1970">[tim_hukum]</text>
+  <path class="flow" d="M1310 1900 H1590 V1980"/>
+  <rect class="role-node node" x="1360" y="1985" width="460" height="80"/>
+  <text class="body" x="1590" y="2035">Tampilkan dasbor Tim Hukum</text>
+
+  <text class="branch" x="2260" y="1970">[user]</text>
+  <path class="flow" d="M1385 1850 H2260 V1980"/>
+  <rect class="role-node node" x="2030" y="1985" width="460" height="80"/>
+  <text class="body" x="2260" y="2035">Tampilkan dasbor User</text>
+
+  <!-- Footer notes -->
+  <rect x="35" y="2110" width="2530" height="75" rx="12" ry="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <text class="foot" x="60" y="2142"><tspan font-weight="700">Catatan:</tspan><tspan> registrasi manual langsung membuat sesi login; akun baru ber-role </tspan><tspan font-weight="700">user</tspan><tspan>. *Perilaku Google SSO saat ini menimpa role akun lama menjadi user.</tspan></text>
+</svg>

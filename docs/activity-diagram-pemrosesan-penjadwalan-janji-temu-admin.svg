@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2800" height="2320" viewBox="0 0 2800 2320" role="img" aria-labelledby="diagram-title diagram-desc">
+  <title id="diagram-title">Activity Diagram — Pemrosesan dan Penjadwalan Janji Temu oleh Admin</title>
+  <desc id="diagram-desc">Diagram aktivitas admin dalam memproses appointment berstatus submitted. Admin dapat menyetujui dan menjadwalkan pertemuan daring atau luring, atau menolak dengan alasan. Sistem memperbarui appointment dan mengirimkan notifikasi email kepada pengguna.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#1e293b"/>
+    </marker>
+    <style>
+      .frame { fill:#ffffff; stroke:#1e293b; stroke-width:3; }
+      .titlebar { fill:#f97316; stroke:#1e293b; stroke-width:3; }
+      .lanehead { fill:#f8fafc; stroke:#1e293b; stroke-width:3; }
+      .adminlane { fill:#fffdf9; stroke:#cbd5e1; stroke-width:2; }
+      .systemlane { fill:#f8fbff; stroke:#cbd5e1; stroke-width:2; }
+      .adminnode { fill:#ffffff; stroke:#475569; stroke-width:3; }
+      .systemnode { fill:#eff6ff; stroke:#2563eb; stroke-width:3; }
+      .successnode { fill:#ecfdf5; stroke:#059669; stroke-width:3; }
+      .rejectnode { fill:#fff1f2; stroke:#e11d48; stroke-width:3; }
+      .notenode { fill:#fffbeb; stroke:#d97706; stroke-width:2.5; }
+      .node { rx:16; ry:16; }
+      .decision { fill:#ffffff; stroke:#334155; stroke-width:3; }
+      .flow { fill:none; stroke:#1e293b; stroke-width:3.5; marker-end:url(#arrow); stroke-linejoin:round; stroke-linecap:round; }
+      .title { font-family:Arial, Helvetica, sans-serif; font-size:37px; font-weight:700; fill:#ffffff; text-anchor:middle; }
+      .lane-title { font-family:Arial, Helvetica, sans-serif; font-size:31px; font-weight:700; fill:#0f172a; text-anchor:middle; }
+      .body { font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:600; fill:#0f172a; text-anchor:middle; }
+      .small { font-family:Arial, Helvetica, sans-serif; font-size:19px; font-weight:600; fill:#0f172a; text-anchor:middle; }
+      .branch { font-family:Arial, Helvetica, sans-serif; font-size:20px; font-weight:700; fill:#1d4ed8; }
+      .yes { font-family:Arial, Helvetica, sans-serif; font-size:18px; font-weight:700; fill:#047857; }
+      .no { font-family:Arial, Helvetica, sans-serif; font-size:18px; font-weight:700; fill:#be123c; }
+      .foot { font-family:Arial, Helvetica, sans-serif; font-size:17px; fill:#334155; }
+    </style>
+  </defs>
+
+  <!-- Page and vertical swimlanes -->
+  <rect class="frame" x="15" y="15" width="2770" height="2290"/>
+  <rect class="titlebar" x="15" y="15" width="2770" height="88"/>
+  <text class="title" x="1400" y="72">ACTIVITY DIAGRAM — PEMROSESAN &amp; PENJADWALAN JANJI TEMU OLEH ADMIN</text>
+  <rect class="lanehead" x="15" y="103" width="930" height="64"/>
+  <rect class="lanehead" x="945" y="103" width="1840" height="64"/>
+  <text class="lane-title" x="480" y="144">Admin / Super Admin</text>
+  <text class="lane-title" x="1865" y="144">Sistem</text>
+  <rect class="adminlane" x="15" y="167" width="930" height="2050"/>
+  <rect class="systemlane" x="945" y="167" width="1840" height="2050"/>
+
+  <!-- Queue access and review -->
+  <circle cx="110" cy="245" r="22" fill="#111827"/>
+  <line class="flow" x1="132" y1="245" x2="190" y2="245"/>
+  <rect class="adminnode node" x="195" y="200" width="470" height="90"/>
+  <text class="body" x="430" y="234"><tspan x="430">Akses halaman</tspan><tspan x="430" dy="27">Appointment Admin</tspan></text>
+  <line class="flow" x1="665" y1="245" x2="1180" y2="245"/>
+  <rect class="systemnode node" x="1190" y="200" width="550" height="90"/>
+  <text class="body" x="1465" y="234"><tspan x="1465">Muat seluruh appointment dan</tspan><tspan x="1465" dy="27">rekap jadwal approved</tspan></text>
+  <path class="flow" d="M1190 245 H790 V410 H665"/>
+  <rect class="adminnode node" x="195" y="365" width="470" height="90"/>
+  <text class="body" x="430" y="399"><tspan x="430">Pilih appointment</tspan><tspan x="430" dy="27">berstatus submitted</tspan></text>
+  <line class="flow" x1="665" y1="410" x2="1180" y2="410"/>
+  <rect class="systemnode node" x="1190" y="365" width="550" height="90"/>
+  <text class="body" x="1465" y="399"><tspan x="1465">Tampilkan detail pengajuan:</tspan><tspan x="1465" dy="27">pemohon, tujuan, mode, dan preferensi</tspan></text>
+  <path class="flow" d="M1190 410 H790 V580 H665"/>
+  <rect class="adminnode node" x="195" y="535" width="470" height="90"/>
+  <text class="body" x="430" y="569"><tspan x="430">Tinjau data dan pilih</tspan><tspan x="430" dy="27">keputusan</tspan></text>
+  <path class="flow" d="M430 625 V665"/>
+  <polygon class="decision" points="430,665 570,735 430,805 290,735"/>
+  <text class="small" x="430" y="728"><tspan x="430">Keputusan</tspan><tspan x="430" dy="23">admin?</tspan></text>
+
+  <!-- Approval path in the left lane -->
+  <text class="yes" x="180" y="720">[Setujui]</text>
+  <path class="flow" d="M290 735 H250 V860"/>
+  <rect class="adminnode node" x="100" y="860" width="300" height="82"/>
+  <text class="small" x="250" y="892"><tspan x="250">Klik Setujui dan</tspan><tspan x="250" dy="23">buka formulir jadwal</tspan></text>
+  <path class="flow" d="M250 942 V990"/>
+  <rect class="adminnode node" x="100" y="990" width="300" height="130"/>
+  <text class="small" x="250" y="1020"><tspan x="250">Isi jadwal fix dan catatan:</tspan><tspan x="250" dy="23">daring → link meeting;</tspan><tspan x="250" dy="23">luring → gedung dan</tspan><tspan x="250" dy="23">tautan Google Maps</tspan></text>
+  <path class="flow" d="M250 1120 V1160"/>
+  <rect class="adminnode node" x="100" y="1165" width="300" height="76"/>
+  <text class="small" x="250" y="1210">Kirim persetujuan</text>
+
+  <!-- Approval system result -->
+  <path class="flow" d="M400 1203 H1190"/>
+  <rect class="systemnode node" x="1190" y="1145" width="650" height="116"/>
+  <text class="body" x="1515" y="1178"><tspan x="1515">Perbarui appointment: admin_id, status approved,</tspan><tspan x="1515" dy="27">jadwal fix, link/alamat, Maps, dan catatan</tspan></text>
+  <path class="flow" d="M1515 1261 V1315"/>
+  <rect class="systemnode node" x="1190" y="1315" width="650" height="90"/>
+  <text class="body" x="1515" y="1348"><tspan x="1515">Kirim email notifikasi persetujuan</tspan><tspan x="1515" dy="27">kepada pengguna</tspan></text>
+  <path class="flow" d="M1515 1405 V1455"/>
+  <rect class="successnode node" x="1190" y="1455" width="650" height="90"/>
+  <text class="body" x="1515" y="1488"><tspan x="1515">Kembali ke dashboard; tampilkan pesan sukses</tspan><tspan x="1515" dy="27">dan masukkan ke rekap jadwal</tspan></text>
+  <path class="flow" d="M1515 1545 V1585"/>
+  <circle cx="1515" cy="1625" r="29" fill="#ffffff" stroke="#111827" stroke-width="4"/>
+  <circle cx="1515" cy="1625" r="19" fill="#111827"/>
+
+  <!-- Rejection path kept separate, below the approval path -->
+  <text class="no" x="585" y="720">[Tolak]</text>
+  <path class="flow" d="M570 735 H700 V860"/>
+  <rect class="adminnode node" x="550" y="860" width="300" height="82"/>
+  <text class="small" x="700" y="892"><tspan x="700">Klik Tolak dan buka</tspan><tspan x="700" dy="23">formulir penolakan</tspan></text>
+  <path class="flow" d="M700 942 V990"/>
+  <rect class="adminnode node" x="550" y="990" width="300" height="130"/>
+  <text class="small" x="700" y="1020"><tspan x="700">Isi alasan penolakan</tspan><tspan x="700" dy="23">(wajib pada formulir),</tspan><tspan x="700" dy="23">kemudian kirim</tspan></text>
+  <path class="flow" d="M700 1120 V1760 H1190"/>
+  <rect class="rejectnode node" x="1190" y="1715" width="650" height="116"/>
+  <text class="body" x="1515" y="1748"><tspan x="1515">Perbarui appointment: admin_id,</tspan><tspan x="1515" dy="27">status rejected, dan alasan penolakan</tspan></text>
+  <path class="flow" d="M1515 1831 V1885"/>
+  <rect class="systemnode node" x="1190" y="1885" width="650" height="90"/>
+  <text class="body" x="1515" y="1918"><tspan x="1515">Kirim email notifikasi penolakan</tspan><tspan x="1515" dy="27">kepada pengguna</tspan></text>
+  <path class="flow" d="M1515 1975 V2025"/>
+  <rect class="rejectnode node" x="1190" y="2025" width="650" height="80"/>
+  <text class="body" x="1515" y="2074">Kembali ke dashboard dengan pesan sukses</text>
+  <path class="flow" d="M1515 2105 V2140"/>
+  <circle cx="1515" cy="2180" r="29" fill="#ffffff" stroke="#111827" stroke-width="4"/>
+  <circle cx="1515" cy="2180" r="19" fill="#111827"/>
+
+  <!-- Fact note -->
+  <rect class="notenode node" x="1880" y="1145" width="760" height="148"/>
+  <text class="foot" x="2260" y="1177"><tspan x="2260" font-weight="700">Catatan implementasi saat ini:</tspan><tspan x="2260" dy="23">form UI mewajibkan jadwal fix saat persetujuan</tspan><tspan x="2260" dy="21">dan alasan saat penolakan. Controller menyimpan</tspan><tspan x="2260" dy="21">nilai request tanpa aturan validasi server eksplisit.</tspan></text>
+</svg>

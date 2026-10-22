@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="6000" height="3700" viewBox="0 0 6000 3700" role="img" aria-labelledby="title desc">
+  <title id="title">ERD Chen Portal Kebijakan — Akun dan Layanan Portal</title>
+  <desc id="desc">Lembar pertama ERD Chen Portal Kebijakan. Berisi users, profil, reset kata sandi, sesi, log aktivitas, janji temu, dan berita dengan tata letak bebas tumpang tindih.</desc>
+  <defs>
+    <style>
+      .page{fill:#fff;stroke:#1e293b;stroke-width:7}.bar{fill:#f97316;stroke:#1e293b;stroke-width:7}
+      .title{font-family:Arial,sans-serif;font-size:38px;font-weight:bold;fill:#fff;text-anchor:middle}.sub{font-family:Arial,sans-serif;font-size:19px;fill:#475569;text-anchor:middle}
+      .entity{fill:#eff6ff;stroke:#2563eb;stroke-width:5;rx:8}.profile{fill:#f5f3ff;stroke:#7c3aed;stroke-width:5;rx:8}.auth{fill:#f8fafc;stroke:#475569;stroke-width:5;rx:8}.log{fill:#fffbeb;stroke:#a16207;stroke-width:5;rx:8}.appt{fill:#eef2ff;stroke:#4338ca;stroke-width:5;rx:8}.news{fill:#fdf2f8;stroke:#be185d;stroke-width:5;rx:8}
+      .name{font-family:Arial,sans-serif;font-size:25px;font-weight:bold;fill:#0f172a;text-anchor:middle;dominant-baseline:middle}
+      .attr{fill:#fff;stroke:#64748b;stroke-width:3.5}.key{fill:#fff7ed;stroke:#dc2626;stroke-width:4}.a{font-family:Arial,sans-serif;font-size:18px;fill:#0f172a;text-anchor:middle;dominant-baseline:middle}.as{font-family:Arial,sans-serif;font-size:15px;fill:#0f172a;text-anchor:middle;dominant-baseline:middle}.pk{font-family:Arial,sans-serif;font-size:18px;font-weight:bold;fill:#b91c1c;text-anchor:middle;dominant-baseline:middle;text-decoration:underline}
+      .rel{fill:#fff7ed;stroke:#c2410c;stroke-width:5}.rt{font-family:Arial,sans-serif;font-size:16px;font-weight:bold;fill:#7c2d12;text-anchor:middle;dominant-baseline:middle}.rs{font-family:Arial,sans-serif;font-size:14px;font-weight:bold;fill:#7c2d12;text-anchor:middle;dominant-baseline:middle}
+      .line{fill:none;stroke:#334155;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round}.logical{fill:none;stroke:#7e22ce;stroke-width:4.5;stroke-dasharray:14 9;stroke-linecap:round;stroke-linejoin:round}.aline{fill:none;stroke:#94a3b8;stroke-width:3;stroke-linecap:round}
+      .card{font-family:Arial,sans-serif;font-size:18px;font-weight:bold;fill:#0f172a}.lcard{font-family:Arial,sans-serif;font-size:17px;font-weight:bold;fill:#6b21a8}.legend{font-family:Arial,sans-serif;font-size:17px;fill:#334155}.note{fill:#fffbeb;stroke:#d97706;stroke-width:3.5;rx:12}.warn{fill:#fff1f2;stroke:#e11d48;stroke-width:3.5;rx:12}.nt{font-family:Arial,sans-serif;font-size:17px;fill:#78350f}.wt{font-family:Arial,sans-serif;font-size:17px;fill:#9f1239}
+    </style>
+  </defs>
+  <rect class="page" x="18" y="18" width="5964" height="3664"/>
+  <rect class="bar" x="18" y="18" width="5964" height="105"/>
+  <text class="title" x="3000" y="82">ERD PORTAL KEBIJAKAN — NOTASI CHEN</text>
+  <text class="sub" x="3000" y="165">Lembar 1 dari 2 • Akun, autentikasi, audit, janji temu, dan berita</text>
+  <rect class="entity" x="230" y="220" width="145" height="44"/><text class="legend" x="405" y="250">Entitas</text>
+  <ellipse class="attr" cx="690" cy="242" rx="88" ry="28"/><text class="legend" x="805" y="250">Atribut</text>
+  <polygon class="rel" points="1090,205 1130,242 1090,279 1050,242"/><text class="legend" x="1155" y="250">Relasi</text>
+  <line class="logical" x1="1450" y1="242" x2="1580" y2="242"/><text class="legend" x="1610" y="250">relasi logis / tanpa FK</text>
+
+  <!-- Relation and attribute connector lines -->
+  <g id="lines">
+    <path class="line" d="M1300 660 L1645 820 L2600 1560"/>
+    <path class="logical" d="M1220 1480 L1660 1530 L2600 1610"/>
+    <path class="logical" d="M1300 2460 L1670 2180 L2600 1710"/>
+    <path class="line" d="M2750 1700 L2635 2110 L2380 2520"/>
+    <path class="line" d="M2850 1700 L3000 2110 L3430 2540"/>
+    <path class="line" d="M3100 1700 L3860 1980 L4000 2380"/>
+    <path class="line" d="M3000 1600 L3660 980 L4300 700"/>
+
+    <!-- attribute stems: profile -->
+    <path class="aline" d="M920 600 L880 425"/><path class="aline" d="M700 650 L510 650"/><path class="aline" d="M820 720 L600 910"/><path class="aline" d="M1120 720 L1160 930"/>
+    <!-- reset -->
+    <path class="aline" d="M930 1420 L880 1230"/><path class="aline" d="M650 1480 L460 1550"/><path class="aline" d="M930 1540 L930 1730"/>
+    <!-- sessions -->
+    <path class="aline" d="M900 2400 L850 2210"/><path class="aline" d="M700 2460 L470 2510"/><path class="aline" d="M880 2520 L780 2680"/><path class="aline" d="M1120 2520 L1220 2690"/>
+    <!-- users -->
+    <path class="aline" d="M2720 1560 L2650 1370"/><path class="aline" d="M2920 1560 L3000 1360"/><path class="aline" d="M3100 1580 L3370 1460"/><path class="aline" d="M2750 1700 L2550 1910"/><path class="aline" d="M3000 1700 L3040 1900"/>
+    <!-- logs -->
+    <path class="aline" d="M2250 2520 L2200 2350"/><path class="aline" d="M2100 2580 L1800 2660"/><path class="aline" d="M2300 2640 L2300 2810"/><path class="aline" d="M2550 2580 L2800 2875"/>
+    <!-- appointments -->
+    <path class="aline" d="M3550 2540 L3500 2370"/><path class="aline" d="M3430 2600 L3190 2660"/><path class="aline" d="M3540 2660 L3450 2830"/><path class="aline" d="M3800 2660 L4020 2790"/><path class="aline" d="M3950 2600 L4200 2660"/>
+    <!-- news -->
+    <path class="aline" d="M4450 650 L4400 465"/><path class="aline" d="M4750 650 L4870 470"/><path class="aline" d="M4900 700 L5140 800"/><path class="aline" d="M4500 750 L4450 960"/><path class="aline" d="M4750 750 L4850 980"/>
+  </g>
+
+  <!-- Entities -->
+  <g id="profile">
+    <rect class="profile" x="700" y="600" width="600" height="120"/><text class="name" x="1000" y="660">USER_PROFILES</text>
+    <ellipse class="key" cx="880" cy="390" rx="120" ry="38"/><text class="pk" x="880" y="390">id (PK)</text>
+    <ellipse class="attr" cx="480" cy="650" rx="175" ry="44"/><text class="as" x="480" y="643">nama, alamat,</text><text class="as" x="480" y="665">pekerjaan</text>
+    <ellipse class="attr" cx="590" cy="930" rx="195" ry="46"/><text class="as" x="590" y="923">tempat_lahir,</text><text class="as" x="590" y="945">tanggal_lahir</text>
+    <ellipse class="attr" cx="1160" cy="950" rx="150" ry="38"/><text class="as" x="1160" y="950">timestamps</text>
+  </g>
+  <g id="reset">
+    <rect class="auth" x="650" y="1420" width="570" height="120"/><text class="name" x="935" y="1480">PASSWORD_RESET_TOKENS</text>
+    <ellipse class="key" cx="880" cy="1185" rx="170" ry="42"/><text class="pk" x="880" y="1178">email (PK)</text><text class="as" x="880" y="1200">referensi email akun</text>
+    <ellipse class="attr" cx="430" cy="1550" rx="115" ry="38"/><text class="a" x="430" y="1550">token</text>
+    <ellipse class="attr" cx="930" cy="1770" rx="145" ry="38"/><text class="as" x="930" y="1770">created_at</text>
+  </g>
+  <g id="sessions">
+    <rect class="auth" x="700" y="2400" width="600" height="120"/><text class="name" x="1000" y="2460">SESSIONS</text>
+    <ellipse class="key" cx="850" cy="2170" rx="115" ry="38"/><text class="pk" x="850" y="2170">id (PK)</text>
+    <ellipse class="attr" cx="450" cy="2510" rx="165" ry="42"/><text class="as" x="450" y="2503">ip_address,</text><text class="as" x="450" y="2525">user_agent</text>
+    <ellipse class="attr" cx="780" cy="2720" rx="125" ry="38"/><text class="a" x="780" y="2720">payload</text>
+    <ellipse class="attr" cx="1220" cy="2730" rx="175" ry="42"/><text class="as" x="1220" y="2723">last_activity,</text><text class="as" x="1220" y="2745">user_id*</text>
+  </g>
+  <g id="users">
+    <rect class="entity" x="2600" y="1560" width="500" height="140"/><text class="name" x="2850" y="1630">USERS</text>
+    <ellipse class="key" cx="2650" cy="1330" rx="115" ry="38"/><text class="pk" x="2650" y="1330">id (PK)</text>
+    <ellipse class="attr" cx="3000" cy="1310" rx="175" ry="42"/><text class="as" x="3000" y="1303">name†, email</text><text class="as" x="3000" y="1325">email unik</text>
+    <ellipse class="attr" cx="3370" cy="1450" rx="190" ry="45"/><text class="as" x="3370" y="1443">password, google_id,</text><text class="as" x="3370" y="1465">totp_secret</text>
+    <ellipse class="attr" cx="2550" cy="1950" rx="155" ry="40"/><text class="as" x="2550" y="1950">foto_profil</text>
+    <ellipse class="attr" cx="3040" cy="1940" rx="200" ry="45"/><text class="as" x="3040" y="1933">role: user, admin,</text><text class="as" x="3040" y="1955">tim_hukum, super_admin</text>
+  </g>
+  <g id="logs">
+    <rect class="log" x="2000" y="2520" width="550" height="120"/><text class="name" x="2275" y="2580">ACTIVITY_LOGS</text>
+    <ellipse class="key" cx="2200" cy="2310" rx="115" ry="38"/><text class="pk" x="2200" y="2310">id (PK)</text>
+    <ellipse class="attr" cx="1800" cy="2670" rx="180" ry="44"/><text class="as" x="1800" y="2663">action, aksi,</text><text class="as" x="1800" y="2685">admin_name</text>
+    <ellipse class="attr" cx="2300" cy="2850" rx="250" ry="48"/><text class="as" x="2300" y="2843">kategori, perihal, catatan,</text><text class="as" x="2300" y="2865">snapshot, waktu</text>
+    <ellipse class="attr" cx="2800" cy="2920" rx="205" ry="44"/><text class="as" x="2800" y="2913">model_type + model_id</text><text class="as" x="2800" y="2935">target polimorfik‡</text>
+  </g>
+  <g id="appointments">
+    <rect class="appt" x="3430" y="2540" width="520" height="120"/><text class="name" x="3690" y="2600">APPOINTMENTS</text>
+    <ellipse class="key" cx="3500" cy="2330" rx="115" ry="38"/><text class="pk" x="3500" y="2330">id (PK)</text>
+    <ellipse class="attr" cx="3160" cy="2660" rx="190" ry="44"/><text class="as" x="3160" y="2653">nama, instansi,</text><text class="as" x="3160" y="2675">tipe_pemohon</text>
+    <ellipse class="attr" cx="3450" cy="2870" rx="255" ry="48"/><text class="as" x="3450" y="2863">alasan, tujuan, detail_tujuan,</text><text class="as" x="3450" y="2885">mode, preferensi_waktu</text>
+    <ellipse class="attr" cx="4020" cy="2830" rx="235" ry="46"/><text class="as" x="4020" y="2823">tanggal_waktu, alamat,</text><text class="as" x="4020" y="2845">link_meeting/maps</text>
+    <ellipse class="attr" cx="4230" cy="2670" rx="205" ry="44"/><text class="as" x="4230" y="2663">status, alasan,</text><text class="as" x="4230" y="2685">berita_acara</text>
+  </g>
+  <g id="news">
+    <rect class="news" x="4300" y="650" width="600" height="120"/><text class="name" x="4600" y="710">BERITAS</text>
+    <ellipse class="key" cx="4400" cy="425" rx="115" ry="38"/><text class="pk" x="4400" y="425">id (PK)</text>
+    <ellipse class="attr" cx="4870" cy="430" rx="210" ry="45"/><text class="as" x="4870" y="423">kategori, judul, foto,</text><text class="as" x="4870" y="445">konten berita</text>
+    <ellipse class="attr" cx="5150" cy="810" rx="185" ry="43"/><text class="as" x="5150" y="803">tanggal, lokasi,</text><text class="as" x="5150" y="825">status</text>
+    <ellipse class="attr" cx="4450" cy="1000" rx="190" ry="43"/><text class="as" x="4450" y="993">views, revisi_ke,</text><text class="as" x="4450" y="1015">riwayat</text>
+    <ellipse class="attr" cx="4860" cy="1010" rx="195" ry="43"/><text class="as" x="4860" y="1003">alasan_penolakan,</text><text class="as" x="4860" y="1025">timestamps</text>
+  </g>
+
+  <!-- Relation diamonds -->
+  <g id="relations">
+    <polygon class="rel" points="1750,740 1855,820 1750,900 1645,820"/><text class="rt" x="1750" y="812">MEMILIKI</text><text class="rs" x="1750" y="833">PROFIL</text>
+    <text class="card" x="1335" y="680">0..N</text><text class="card" x="2545" y="1545">1</text>
+    <polygon class="rel" points="1860,1450 1960,1530 1860,1610 1660,1530"/><text class="rs" x="1860" y="1522">MEMINTA</text><text class="rs" x="1860" y="1543">RESET OTP</text>
+    <text class="lcard" x="1235" y="1510">0..1</text><text class="lcard" x="2540" y="1585">1</text>
+    <polygon class="rel" points="1770,2100 1870,2180 1770,2260 1670,2180"/><text class="rs" x="1770" y="2172">MEMILIKI</text><text class="rs" x="1770" y="2193">SESI</text>
+    <text class="lcard" x="1335" y="2425">0..N</text><text class="lcard" x="2540" y="1705">1</text>
+    <polygon class="rel" points="2750,2030 2865,2110 2750,2190 2635,2110"/><text class="rs" x="2750" y="2102">MENGHASILKAN</text><text class="rs" x="2750" y="2123">LOG</text>
+    <text class="card" x="2780" y="1750">1</text><text class="card" x="2380" y="2495">0..N</text>
+    <polygon class="rel" points="3000,2030 3140,2110 3000,2190 2860,2110"/><text class="rs" x="3000" y="2102">MENGAJUKAN</text><text class="rs" x="3000" y="2123">role: user</text>
+    <text class="card" x="3030" y="1745">1</text><text class="card" x="3410" y="2515">0..N</text>
+    <polygon class="rel" points="4000,1900 4140,1980 4000,2060 3860,1980"/><text class="rs" x="4000" y="1972">MEMPROSES</text><text class="rs" x="4000" y="1993">role: admin</text>
+    <text class="card" x="3130" y="1740">0..1</text><text class="card" x="3970" y="2350">0..N</text>
+    <polygon class="rel" points="3660,900 3760,980 3660,1060 3560,980"/><text class="rs" x="3660" y="972">MENULIS</text><text class="rs" x="3660" y="993">role: admin</text>
+    <text class="card" x="3080" y="1550">1</text><text class="card" x="4250" y="690">0..N</text>
+  </g>
+
+  <!-- Notes -->
+  <rect class="warn" x="250" y="3120" width="2700" height="350"/>
+  <text class="wt" x="300" y="3190">† Aplikasi memakai users.name, tetapi kolom tersebut belum dibuat dalam migration users.</text>
+  <text class="wt" x="300" y="3250">USER_PROFILES secara fisik 1 : 0..N karena user_id belum UNIQUE; secara konsep ditujukan sebagai profil tunggal.</text>
+  <text class="wt" x="300" y="3310">* SESSIONS.user_id adalah indeks nullable, bukan FK. Relasi reset OTP melalui email juga belum memiliki FK.</text>
+  <text class="wt" x="300" y="3370">‡ ACTIVITY_LOGS memakai model_type + model_id untuk target polimorfik; lihat Lembar 2 untuk objek dokumen kebijakan.</text>
+  <rect class="note" x="3180" y="3120" width="2550" height="350"/>
+  <text class="nt" x="3230" y="3190">Aturan baca: persegi panjang = entitas, oval = atribut, belah ketupat = relasi.</text>
+  <text class="nt" x="3230" y="3250">FK digambarkan sebagai relasi, bukan sebagai oval atribut. Garis putus-putus menunjukkan referensi logis.</text>
+  <text class="nt" x="3230" y="3310">Relasi janji temu dipisahkan menjadi pengajuan oleh User dan pemrosesan oleh Admin agar dua peran tidak bertumpuk.</text>
+  <text class="nt" x="3230" y="3370">Atribut sejenis diringkas dalam satu oval; rincian kolom tetap mengacu pada migration proyek.</text>
+</svg>

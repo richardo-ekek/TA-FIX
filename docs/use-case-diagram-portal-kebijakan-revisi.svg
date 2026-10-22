@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="7200" height="4600" viewBox="0 0 7200 4600" role="img" aria-labelledby="uc-title uc-desc">
+  <title id="uc-title">Use Case Diagram Portal Kebijakan — Revisi</title>
+  <desc id="uc-desc">Use case diagram Portal Kebijakan berdasarkan route dan controller proyek. Aktor terdiri dari Pengunjung, Pengguna Terautentikasi, User, Admin, Tim Hukum, dan Super Admin.</desc>
+  <defs>
+    <style>
+      .page { fill:#fff; stroke:#1e293b; stroke-width:8; }
+      .titlebar { fill:#f97316; stroke:#1e293b; stroke-width:8; }
+      .title { font-family:Arial,Helvetica,sans-serif; font-size:42px; font-weight:700; fill:#fff; text-anchor:middle; }
+      .subtitle { font-family:Arial,Helvetica,sans-serif; font-size:20px; fill:#475569; text-anchor:middle; }
+      .boundary { fill:#fff; stroke:#334155; stroke-width:5; }
+      .section { fill:#f8fafc; stroke:#cbd5e1; stroke-width:3; stroke-dasharray:13 9; rx:16; }
+      .section-title { font-family:Arial,Helvetica,sans-serif; font-size:20px; font-weight:700; fill:#475569; letter-spacing:1px; }
+      .system-title { font-family:Arial,Helvetica,sans-serif; font-size:27px; font-weight:700; fill:#0f172a; text-anchor:middle; }
+      .uc { fill:#fff; stroke:#334155; stroke-width:4.5; }
+      .uc-user { fill:#eff6ff; stroke:#2563eb; stroke-width:4.5; }
+      .uc-admin { fill:#fff7ed; stroke:#c2410c; stroke-width:4.5; }
+      .uc-legal { fill:#f5f3ff; stroke:#7c3aed; stroke-width:4.5; }
+      .uc-super { fill:#fdf2f8; stroke:#be185d; stroke-width:4.5; }
+      .uc-system { fill:#ecfeff; stroke:#0f766e; stroke-width:4.5; }
+      .uc-text { font-family:Arial,Helvetica,sans-serif; font-size:20px; font-weight:700; fill:#0f172a; text-anchor:middle; dominant-baseline:middle; }
+      .uc-small { font-family:Arial,Helvetica,sans-serif; font-size:16px; font-weight:700; fill:#0f172a; text-anchor:middle; dominant-baseline:middle; }
+      .actor { fill:none; stroke:#0f172a; stroke-width:5; stroke-linecap:round; stroke-linejoin:round; }
+      .actor-label { font-family:Arial,Helvetica,sans-serif; font-size:21px; font-weight:700; fill:#0f172a; text-anchor:middle; }
+      .actor-sub { font-family:Arial,Helvetica,sans-serif; font-size:16px; fill:#475569; text-anchor:middle; }
+      .assoc { fill:none; stroke:#334155; stroke-width:4; stroke-linecap:round; }
+      .include { fill:none; stroke:#0f766e; stroke-width:3.5; stroke-dasharray:12 9; marker-end:url(#open-arrow); }
+      .extend { fill:none; stroke:#7e22ce; stroke-width:3.5; stroke-dasharray:12 9; marker-end:url(#open-arrow-purple); }
+      .relation-label { font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; fill:#0f766e; text-anchor:middle; }
+      .extend-label { font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; fill:#6b21a8; text-anchor:middle; }
+      .legend { font-family:Arial,Helvetica,sans-serif; font-size:17px; fill:#334155; }
+      .note { fill:#fffbeb; stroke:#d97706; stroke-width:3.5; rx:12; }
+      .warn { fill:#fff1f2; stroke:#e11d48; stroke-width:3.5; rx:12; }
+      .note-text { font-family:Arial,Helvetica,sans-serif; font-size:17px; fill:#78350f; }
+      .warn-text { font-family:Arial,Helvetica,sans-serif; font-size:17px; fill:#9f1239; }
+    </style>
+    <marker id="open-arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto">
+      <path d="M1,1 L11,6 L1,11" fill="none" stroke="#0f766e" stroke-width="2"/>
+    </marker>
+    <marker id="open-arrow-purple" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto">
+      <path d="M1,1 L11,6 L1,11" fill="none" stroke="#7e22ce" stroke-width="2"/>
+    </marker>
+    <g id="actor-icon">
+      <circle class="actor" cx="0" cy="-42" r="22"/>
+      <path class="actor" d="M0 -20 L0 45 M-34 3 L0 3 L34 3 M0 45 L-30 85 M0 45 L30 85"/>
+    </g>
+  </defs>
+
+  <rect class="page" x="20" y="20" width="7160" height="4560"/>
+  <rect class="titlebar" x="20" y="20" width="7160" height="115"/>
+  <text class="title" x="3600" y="88">USE CASE DIAGRAM — PORTAL KEBIJAKAN</text>
+  <text class="subtitle" x="3600" y="180">Revisi berdasarkan route dan controller proyek TA-FIX</text>
+
+  <!-- Legend -->
+  <ellipse class="uc-user" cx="430" cy="245" rx="110" ry="34"/>
+  <text class="legend" x="575" y="252">Use case</text>
+  <line class="assoc" x1="830" y1="245" x2="980" y2="245"/>
+  <text class="legend" x="1010" y="252">asosiasi aktor</text>
+  <line class="include" x1="1320" y1="245" x2="1470" y2="245"/>
+  <text class="legend" x="1500" y="252">&lt;&lt;include&gt;&gt;</text>
+  <line class="extend" x1="1810" y1="245" x2="1960" y2="245"/>
+  <text class="legend" x="1990" y="252">&lt;&lt;extend&gt;&gt;</text>
+
+  <!-- System boundary -->
+  <rect class="boundary" x="650" y="330" width="5850" height="3950"/>
+  <text class="system-title" x="3575" y="390">SISTEM PORTAL KEBIJAKAN KEMENTERIAN LUAR NEGERI</text>
+  <rect class="section" x="800" y="450" width="5000" height="950"/>
+  <text class="section-title" x="880" y="510">AUTENTIKASI DAN AKUN</text>
+  <rect class="section" x="800" y="1480" width="3420" height="2200"/>
+  <text class="section-title" x="880" y="1540">LAYANAN USER DAN ADMIN</text>
+  <rect class="section" x="4300" y="1480" width="2000" height="2200"/>
+  <text class="section-title" x="4380" y="1540">VERIFIKASI DAN TINJAUAN</text>
+
+  <!-- Association and dependency lines first -->
+  <g id="connectors">
+    <!-- Guest -->
+    <path class="assoc" d="M360 610 L1130 610"/>
+    <path class="assoc" d="M360 650 L900 650 L900 800 L2130 800 L2130 690"/>
+    <path class="assoc" d="M360 690 L850 690 L850 865 L3220 865 L3220 745"/>
+    <path class="assoc" d="M360 730 L800 730 L800 930 L4325 930 L4325 770"/>
+    <!-- Authenticated user -->
+    <path class="assoc" d="M360 1200 L1190 1200"/>
+    <path class="assoc" d="M360 1250 L900 1250 L900 1400 L2350 1400 L2350 1300"/>
+    <path class="assoc" d="M360 1300 L850 1300 L850 1450 L3370 1450 L3370 1350"/>
+    <!-- User -->
+    <path class="assoc" d="M360 2100 L1150 1850"/>
+    <path class="assoc" d="M360 2150 L2350 1850"/>
+    <path class="assoc" d="M360 2200 L1150 2350"/>
+    <path class="assoc" d="M360 2250 L2350 2350"/>
+    <!-- Admin -->
+    <path class="assoc" d="M360 3050 L1200 2920"/>
+    <path class="assoc" d="M360 3100 L1200 3420"/>
+    <path class="assoc" d="M360 3150 L2950 3170"/>
+    <!-- Tim Hukum -->
+    <path class="assoc" d="M6840 1950 L5350 1700"/>
+    <path class="assoc" d="M6840 2000 L5350 2100"/>
+    <!-- Super Admin -->
+    <path class="assoc" d="M6840 3300 L5050 3150"/>
+    <path class="assoc" d="M6840 3350 L5850 3150"/>
+    <path class="assoc" d="M6840 3400 L5100 3650"/>
+    <path class="assoc" d="M6840 3450 L5850 3650"/>
+
+    <!-- Login and appointment include reCAPTCHA -->
+    <path class="include" d="M2450 720 L2700 990"/>
+    <text class="relation-label" x="2710" y="850">&lt;&lt;include&gt;&gt;</text>
+    <path class="include" d="M1500 2285 L2450 1110"/>
+    <text class="relation-label" x="2100" y="1660">&lt;&lt;include&gt;&gt;</text>
+
+    <!-- Appointment internal functions -->
+    <path class="extend" d="M4100 3000 L3600 3170"/>
+    <text class="extend-label" x="3840" y="3040">&lt;&lt;extend&gt;&gt; [disetujui]</text>
+    <path class="include" d="M3600 3250 L4100 3420"/>
+    <text class="relation-label" x="3890" y="3370">&lt;&lt;include&gt;&gt;</text>
+    <path class="extend" d="M2750 3600 L2000 3420"/>
+    <text class="extend-label" x="2500" y="3555">&lt;&lt;extend&gt;&gt; [opsional]</text>
+
+    <!-- Tim Hukum internal functions -->
+    <path class="include" d="M5400 2100 L5580 2280"/>
+    <text class="relation-label" x="5530" y="2205">&lt;&lt;include&gt;&gt;</text>
+    <path class="include" d="M5050 2165 L5050 2392"/>
+    <text class="relation-label" x="5150" y="2280">&lt;&lt;include&gt;&gt;</text>
+    <path class="extend" d="M4730 2520 L5050 2165"/>
+    <text class="extend-label" x="4640" y="2350">&lt;&lt;extend&gt;&gt; [lolos]</text>
+    <path class="extend" d="M5570 2520 L5350 2165"/>
+    <text class="extend-label" x="5800" y="2350">&lt;&lt;extend&gt;&gt; [perlu perbaikan]</text>
+
+    <!-- Super Admin policy review and audit -->
+    <path class="include" d="M5050 3215 L5050 2508"/>
+    <text class="relation-label" x="5140" y="2850">&lt;&lt;include&gt;&gt;</text>
+  </g>
+
+  <!-- Actors -->
+  <g transform="translate(270 650)"><use href="#actor-icon"/><text class="actor-label" x="0" y="120">Pengunjung</text><text class="actor-sub" x="0" y="145">(belum login)</text></g>
+  <g transform="translate(270 1250)"><use href="#actor-icon"/><text class="actor-label" x="0" y="120">Pengguna</text><text class="actor-sub" x="0" y="145">Terautentikasi</text></g>
+  <g transform="translate(270 2200)"><use href="#actor-icon"/><text class="actor-label" x="0" y="120">User</text></g>
+  <g transform="translate(270 3150)"><use href="#actor-icon"/><text class="actor-label" x="0" y="120">Admin</text></g>
+  <g transform="translate(6930 2000)"><use href="#actor-icon"/><text class="actor-label" x="0" y="120">Tim Hukum</text></g>
+  <g transform="translate(6930 3400)"><use href="#actor-icon"/><text class="actor-label" x="0" y="120">Super Admin</text></g>
+
+  <!-- Authentication use cases -->
+  <g id="auth-cases">
+    <ellipse class="uc" cx="1400" cy="610" rx="270" ry="62"/><text class="uc-text" x="1400" y="610">Registrasi Akun</text>
+    <ellipse class="uc" cx="2450" cy="650" rx="330" ry="68"/><text class="uc-text" x="2450" y="642">Login Manual</text><text class="uc-small" x="2450" y="666">email, kata sandi, reCAPTCHA</text>
+    <ellipse class="uc" cx="3500" cy="690" rx="320" ry="62"/><text class="uc-text" x="3500" y="690">Login dengan Google SSO</text>
+    <ellipse class="uc" cx="4650" cy="730" rx="330" ry="62"/><text class="uc-text" x="4650" y="722">Reset Kata Sandi</text><text class="uc-small" x="4650" y="746">melalui OTP Email</text>
+    <ellipse class="uc-system" cx="2700" cy="1050" rx="270" ry="60"/><text class="uc-text" x="2700" y="1050">Validasi reCAPTCHA</text>
+    <ellipse class="uc-user" cx="1450" cy="1200" rx="260" ry="58"/><text class="uc-text" x="1450" y="1200">Kelola Profil</text>
+    <ellipse class="uc-user" cx="2600" cy="1250" rx="250" ry="58"/><text class="uc-text" x="2600" y="1250">Ganti Kata Sandi</text>
+    <ellipse class="uc-user" cx="3500" cy="1300" rx="130" ry="58"/><text class="uc-text" x="3500" y="1300">Logout</text>
+  </g>
+
+  <!-- User cases -->
+  <g id="user-cases">
+    <ellipse class="uc-user" cx="1500" cy="1850" rx="350" ry="65"/><text class="uc-text" x="1500" y="1842">Akses Arsip Kebijakan</text><text class="uc-small" x="1500" y="1866">MoU/PKS, TIK Kemlu, TIK Non-Kemlu</text>
+    <ellipse class="uc-user" cx="2700" cy="1850" rx="350" ry="65"/><text class="uc-text" x="2700" y="1842">Baca Berita Disetujui</text><text class="uc-small" x="2700" y="1866">dan lihat detail artikel</text>
+    <ellipse class="uc-user" cx="1500" cy="2350" rx="350" ry="65"/><text class="uc-text" x="1500" y="2342">Ajukan Janji Temu</text><text class="uc-small" x="1500" y="2366">dengan verifikasi reCAPTCHA</text>
+    <ellipse class="uc-user" cx="2700" cy="2350" rx="350" ry="65"/><text class="uc-text" x="2700" y="2342">Lihat Status Janji Temu</text><text class="uc-small" x="2700" y="2366">jadwal, lokasi/link, atau alasan penolakan</text>
+  </g>
+
+  <!-- Admin cases -->
+  <g id="admin-cases">
+    <ellipse class="uc-admin" cx="1600" cy="2920" rx="400" ry="68"/><text class="uc-text" x="1600" y="2912">Kelola Draf Kebijakan</text><text class="uc-small" x="1600" y="2936">ajukan, revisi, dan lihat riwayat</text>
+    <ellipse class="uc-admin" cx="1600" cy="3420" rx="400" ry="68"/><text class="uc-text" x="1600" y="3412">Kelola Draf Berita</text><text class="uc-small" x="1600" y="3436">tulis, revisi, dan ajukan untuk review</text>
+    <ellipse class="uc-admin" cx="3300" cy="3170" rx="350" ry="68"/><text class="uc-text" x="3300" y="3162">Proses Janji Temu</text><text class="uc-small" x="3300" y="3186">setujui atau tolak pengajuan</text>
+    <ellipse class="uc-system" cx="4350" cy="3000" rx="250" ry="58"/><text class="uc-text" x="4350" y="2992">Atur Jadwal</text><text class="uc-small" x="4350" y="3016">dan detail meeting</text>
+    <ellipse class="uc-system" cx="4350" cy="3420" rx="280" ry="58"/><text class="uc-text" x="4350" y="3420">Kirim Notifikasi Email</text>
+    <ellipse class="uc-system" cx="3000" cy="3650" rx="250" ry="58"/><text class="uc-text" x="3000" y="3642">Bantuan Groq AI</text><text class="uc-small" x="3000" y="3666">opsional untuk berita</text>
+  </g>
+
+  <!-- Tim Hukum cases -->
+  <g id="legal-cases">
+    <ellipse class="uc-legal" cx="5050" cy="1700" rx="350" ry="65"/><text class="uc-text" x="5050" y="1692">Lihat Antrean dan Riwayat</text><text class="uc-small" x="5050" y="1716">dokumen berstatus pending_hukum</text>
+    <ellipse class="uc-legal" cx="5050" cy="2100" rx="350" ry="65"/><text class="uc-text" x="5050" y="2092">Verifikasi Legalitas Dokumen</text><text class="uc-small" x="5050" y="2116">periksa klausul dan regulasi</text>
+    <ellipse class="uc-system" cx="5850" cy="2300" rx="270" ry="58"/><text class="uc-text" x="5850" y="2292">Buat / Unggah</text><text class="uc-small" x="5850" y="2316">Berita Acara</text>
+    <ellipse class="uc-system" cx="5050" cy="2450" rx="290" ry="58"/><text class="uc-text" x="5050" y="2442">Catat Audit Aktivitas</text><text class="uc-small" x="5050" y="2466">hasil verifikasi</text>
+    <ellipse class="uc-legal" cx="4450" cy="2520" rx="280" ry="58"/><text class="uc-text" x="4450" y="2520">Teruskan ke Super Admin</text>
+    <ellipse class="uc-legal" cx="5850" cy="2520" rx="280" ry="58"/><text class="uc-text" x="5850" y="2512">Kembalikan untuk</text><text class="uc-small" x="5850" y="2536">Revisi Hukum</text>
+  </g>
+
+  <!-- Super Admin cases -->
+  <g id="super-cases">
+    <ellipse class="uc-super" cx="5050" cy="3150" rx="300" ry="65"/><text class="uc-text" x="5050" y="3142">Tinjau Kebijakan</text><text class="uc-small" x="5050" y="3166">setujui, revisi, atau tolak</text>
+    <ellipse class="uc-super" cx="5850" cy="3150" rx="260" ry="65"/><text class="uc-text" x="5850" y="3142">Tinjau Berita</text><text class="uc-small" x="5850" y="3166">approve, revisi, atau tolak</text>
+    <ellipse class="uc-super" cx="5000" cy="3650" rx="350" ry="65"/><text class="uc-text" x="5000" y="3642">Kelola Akun Admin</text><text class="uc-small" x="5000" y="3666">dan Tim Hukum</text>
+    <ellipse class="uc-super" cx="5850" cy="3650" rx="300" ry="65"/><text class="uc-text" x="5850" y="3642">Lihat Dasbor</text><text class="uc-small" x="5850" y="3666">rekap jadwal, analitik, log</text>
+  </g>
+
+  <!-- Notes -->
+  <rect class="warn" x="820" y="3900" width="2820" height="270"/>
+  <text class="warn-text" x="875" y="3960">Perbaikan utama: TOTP tidak digambarkan karena belum ada alur autentikasi TOTP pada controller/route.</text>
+  <text class="warn-text" x="875" y="4015">“View Public Policies” diganti menjadi “Akses Arsip Kebijakan”; implementasi saat ini belum menyaring arsip berdasarkan status publik.</text>
+  <text class="warn-text" x="875" y="4070">Pencatatan audit hanya disertakan pada verifikasi Tim Hukum dan tinjauan kebijakan Super Admin, bukan pada seluruh aktivitas.</text>
+  <rect class="note" x="3800" y="3900" width="2470" height="270"/>
+  <text class="note-text" x="3855" y="3960">Kelola Profil, Ganti Kata Sandi, dan Logout berlaku untuk seluruh pengguna yang telah terautentikasi.</text>
+  <text class="note-text" x="3855" y="4015">Super Admin juga diizinkan menjalankan fungsi Admin pada rute yang memakai middleware role:admin,super_admin.</text>
+  <text class="note-text" x="3855" y="4070">Gunakan diagram ini sebagai use case revisi; relasi biru-hijau menunjukkan fungsi sistem yang dipanggil oleh use case utama.</text>
+</svg>

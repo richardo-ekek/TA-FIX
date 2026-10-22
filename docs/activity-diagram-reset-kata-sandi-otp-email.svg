@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="2260" viewBox="0 0 2400 2260" role="img" aria-labelledby="diagram-title diagram-desc">
+  <title id="diagram-title">Activity Diagram — Reset Kata Sandi melalui OTP Email</title>
+  <desc id="diagram-desc">Diagram aktivitas reset kata sandi melalui OTP email pada Portal Layanan. OTP empat digit disimpan dalam session, dikirim melalui SMTP, diverifikasi, kemudian kata sandi baru disimpan.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#1e293b"/>
+    </marker>
+    <style>
+      .frame { fill:#ffffff; stroke:#1e293b; stroke-width:3; }
+      .titlebar { fill:#f97316; stroke:#1e293b; stroke-width:3; }
+      .lane-head { fill:#f8fafc; stroke:#1e293b; stroke-width:3; }
+      .user-lane { fill:#fffdf9; stroke:#cbd5e1; stroke-width:2; }
+      .system-lane { fill:#f8fbff; stroke:#cbd5e1; stroke-width:2; }
+      .user-node { fill:#ffffff; stroke:#475569; stroke-width:3; }
+      .system-node { fill:#eff6ff; stroke:#2563eb; stroke-width:3; }
+      .error-node { fill:#fff1f2; stroke:#e11d48; stroke-width:3; }
+      .note-node { fill:#fffbeb; stroke:#d97706; stroke-width:2.5; }
+      .node { rx:16; ry:16; }
+      .decision { fill:#ffffff; stroke:#334155; stroke-width:3; }
+      .flow { fill:none; stroke:#1e293b; stroke-width:3.5; marker-end:url(#arrow); stroke-linejoin:round; stroke-linecap:round; }
+      .title { font-family:Arial, Helvetica, sans-serif; font-size:37px; font-weight:700; fill:#ffffff; text-anchor:middle; }
+      .lane-title { font-family:Arial, Helvetica, sans-serif; font-size:31px; font-weight:700; fill:#0f172a; text-anchor:middle; }
+      .body { font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:600; fill:#0f172a; text-anchor:middle; }
+      .small { font-family:Arial, Helvetica, sans-serif; font-size:19px; font-weight:600; fill:#0f172a; text-anchor:middle; }
+      .yes { font-family:Arial, Helvetica, sans-serif; font-size:18px; font-weight:700; fill:#047857; }
+      .no { font-family:Arial, Helvetica, sans-serif; font-size:18px; font-weight:700; fill:#be123c; }
+      .label { font-family:Arial, Helvetica, sans-serif; font-size:20px; font-weight:700; fill:#1d4ed8; }
+      .foot { font-family:Arial, Helvetica, sans-serif; font-size:17px; fill:#334155; }
+    </style>
+  </defs>
+
+  <!-- Title and vertical swimlanes -->
+  <rect class="frame" x="15" y="15" width="2370" height="2230"/>
+  <rect class="titlebar" x="15" y="15" width="2370" height="86"/>
+  <text class="title" x="1200" y="70">ACTIVITY DIAGRAM — RESET KATA SANDI MELALUI OTP EMAIL</text>
+  <rect class="lane-head" x="15" y="101" width="880" height="64"/>
+  <rect class="lane-head" x="895" y="101" width="1490" height="64"/>
+  <text class="lane-title" x="455" y="143">Pengguna</text>
+  <text class="lane-title" x="1640" y="143">Sistem</text>
+  <rect class="user-lane" x="15" y="165" width="880" height="2060"/>
+  <rect class="system-lane" x="895" y="165" width="1490" height="2060"/>
+
+  <!-- Open the recovery page -->
+  <circle cx="110" cy="245" r="22" fill="#111827"/>
+  <line class="flow" x1="132" y1="245" x2="190" y2="245"/>
+  <rect class="user-node node" x="195" y="200" width="470" height="90"/>
+  <text class="body" x="430" y="234"><tspan x="430">Klik “Lupa Kata Sandi”</tspan><tspan x="430" dy="27">pada halaman login</tspan></text>
+  <line class="flow" x1="665" y1="245" x2="1115" y2="245"/>
+  <rect class="system-node node" x="1125" y="200" width="470" height="90"/>
+  <text class="body" x="1360" y="234"><tspan x="1360">Tampilkan halaman</tspan><tspan x="1360" dy="27">Lupa Kata Sandi</tspan></text>
+
+  <!-- User selects the email recovery method -->
+  <path class="flow" d="M1125 245 H820 V445 H665"/>
+  <text class="label" x="215" y="380">[Pemulihan melalui email]</text>
+  <rect class="user-node node" x="195" y="400" width="470" height="90"/>
+  <text class="body" x="430" y="454">Pilih “Via Email Utama”</text>
+  <path class="flow" d="M430 490 V540"/>
+  <rect class="user-node node" x="195" y="545" width="470" height="90"/>
+  <text class="body" x="430" y="579"><tspan x="430">Isi alamat email</tspan><tspan x="430" dy="27">yang terdaftar</tspan></text>
+
+  <!-- Check account and deliver the OTP -->
+  <line class="flow" x1="665" y1="590" x2="1115" y2="590"/>
+  <rect class="system-node node" x="1125" y="545" width="470" height="90"/>
+  <text class="body" x="1360" y="579"><tspan x="1360">Validasi format dan cek</tspan><tspan x="1360" dy="27">email di database</tspan></text>
+  <path class="flow" d="M1360 635 V675"/>
+  <polygon class="decision" points="1360,675 1500,745 1360,815 1220,745"/>
+  <text class="small" x="1360" y="738"><tspan x="1360">Email</tspan><tspan x="1360" dy="23">terdaftar?</tspan></text>
+  <text class="no" x="1520" y="727">[Tidak]</text>
+  <path class="flow" d="M1500 745 H1710"/>
+  <rect class="error-node node" x="1720" y="700" width="390" height="90"/>
+  <text class="small" x="1915" y="733"><tspan x="1915">Tampilkan “Email tidak terdaftar”;</tspan><tspan x="1915" dy="23">pengguna mengisi ulang email</tspan></text>
+  <text class="yes" x="1380" y="842">[Ya]</text>
+  <path class="flow" d="M1360 815 V850"/>
+  <rect class="system-node node" x="1125" y="855" width="470" height="95"/>
+  <text class="body" x="1360" y="888"><tspan x="1360">Buat OTP 4 digit dan simpan</tspan><tspan x="1360" dy="27">di Session: otp_{email}</tspan></text>
+  <path class="flow" d="M1360 950 V995"/>
+  <rect class="system-node node" x="1125" y="1000" width="470" height="95"/>
+  <text class="body" x="1360" y="1033"><tspan x="1360">Kirim OTP ke email</tspan><tspan x="1360" dy="27">melalui Gmail SMTP</tspan></text>
+  <path class="flow" d="M1360 1095 V1135"/>
+  <polygon class="decision" points="1360,1135 1500,1205 1360,1275 1220,1205"/>
+  <text class="small" x="1360" y="1198"><tspan x="1360">Email OTP berhasil</tspan><tspan x="1360" dy="23">dikirim?</tspan></text>
+  <text class="no" x="1520" y="1187">[Tidak]</text>
+  <path class="flow" d="M1500 1205 H1710"/>
+  <rect class="error-node node" x="1720" y="1160" width="390" height="90"/>
+  <text class="small" x="1915" y="1193"><tspan x="1915">Tampilkan kegagalan SMTP;</tspan><tspan x="1915" dy="23">periksa koneksi atau konfigurasi</tspan></text>
+
+  <!-- OTP entry and verification -->
+  <text class="yes" x="1380" y="1302">[Ya]</text>
+  <path class="flow" d="M1360 1275 V1340 H665"/>
+  <rect class="user-node node" x="195" y="1295" width="470" height="95"/>
+  <text class="body" x="430" y="1328"><tspan x="430">Buka email dan masukkan</tspan><tspan x="430" dy="27">kode OTP 4 digit</tspan></text>
+  <line class="flow" x1="665" y1="1342" x2="1115" y2="1342"/>
+  <rect class="system-node node" x="1125" y="1295" width="470" height="95"/>
+  <text class="body" x="1360" y="1328"><tspan x="1360">Bandingkan OTP input dengan</tspan><tspan x="1360" dy="27">Session: otp_{email}</tspan></text>
+  <path class="flow" d="M1360 1390 V1430"/>
+  <polygon class="decision" points="1360,1430 1500,1500 1360,1570 1220,1500"/>
+  <text class="small" x="1360" y="1493"><tspan x="1360">OTP</tspan><tspan x="1360" dy="23">valid?</tspan></text>
+  <text class="no" x="1520" y="1482">[Tidak]</text>
+  <path class="flow" d="M1500 1500 H1710"/>
+  <rect class="error-node node" x="1720" y="1455" width="390" height="90"/>
+  <text class="small" x="1915" y="1488"><tspan x="1915">Tampilkan “Kode OTP salah</tspan><tspan x="1915" dy="23">atau kadaluarsa”; input ulang</tspan></text>
+  <text class="yes" x="1380" y="1597">[Ya]</text>
+  <path class="flow" d="M1360 1570 V1605"/>
+  <rect class="system-node node" x="1125" y="1610" width="470" height="95"/>
+  <text class="body" x="1360" y="1643"><tspan x="1360">Hapus OTP dari Session dan</tspan><tspan x="1360" dy="27">tampilkan formulir password baru</tspan></text>
+
+  <!-- Set and persist the new password -->
+  <path class="flow" d="M1125 1657 H820 V1770 H665"/>
+  <rect class="user-node node" x="195" y="1725" width="470" height="95"/>
+  <text class="body" x="430" y="1758"><tspan x="430">Isi password baru dan</tspan><tspan x="430" dy="27">konfirmasi password</tspan></text>
+  <line class="flow" x1="665" y1="1772" x2="1115" y2="1772"/>
+  <rect class="system-node node" x="1125" y="1725" width="470" height="95"/>
+  <text class="body" x="1360" y="1758"><tspan x="1360">Validasi: minimal 8 karakter</tspan><tspan x="1360" dy="27">dan konfirmasi cocok</tspan></text>
+  <path class="flow" d="M1360 1820 V1860"/>
+  <polygon class="decision" points="1360,1860 1500,1930 1360,2000 1220,1930"/>
+  <text class="small" x="1360" y="1923"><tspan x="1360">Password</tspan><tspan x="1360" dy="23">valid?</tspan></text>
+  <text class="no" x="1520" y="1912">[Tidak]</text>
+  <path class="flow" d="M1500 1930 H1710"/>
+  <rect class="error-node node" x="1720" y="1885" width="390" height="90"/>
+  <text class="small" x="1915" y="1918"><tspan x="1915">Tampilkan error validasi;</tspan><tspan x="1915" dy="23">pengguna mengisi ulang</tspan></text>
+  <text class="yes" x="1380" y="2027">[Ya]</text>
+  <path class="flow" d="M1360 2000 V2035"/>
+  <rect class="system-node node" x="1125" y="2040" width="470" height="80"/>
+  <text class="body" x="1360" y="2090">Hash dan simpan password baru</text>
+  <path class="flow" d="M1360 2120 V2145"/>
+  <rect class="system-node node" x="1125" y="2150" width="470" height="70"/>
+  <text class="small" x="1360" y="2193">Alihkan ke login dengan pesan sukses</text>
+  <line class="flow" x1="1595" y1="2185" x2="1650" y2="2185"/>
+  <circle cx="1690" cy="2185" r="29" fill="#ffffff" stroke="#111827" stroke-width="4"/>
+  <circle cx="1690" cy="2185" r="19" fill="#111827"/>
+
+  <!-- Current-implementation note -->
+  <rect class="note-node node" x="70" y="2138" width="940" height="84"/>
+  <text class="foot" x="540" y="2170"><tspan x="540" font-weight="700">Catatan implementasi saat ini:</tspan><tspan x="540" dy="23">endpoint simpan password memvalidasi email dan password, tanpa memeriksa OTP kembali.</tspan></text>
+</svg>

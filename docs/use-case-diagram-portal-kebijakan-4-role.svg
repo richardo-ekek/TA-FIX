@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="7200" height="4600" viewBox="0 0 7200 4600" role="img" aria-labelledby="uc4-title uc4-desc">
+  <title id="uc4-title">Use Case Diagram Portal Kebijakan — Empat Role</title>
+  <desc id="uc4-desc">Use case diagram Portal Kebijakan dengan empat aktor: User, Admin, Tim Hukum, dan Super Admin. Diagram mencakup autentikasi, layanan publik, pengelolaan operasional, verifikasi legalitas, dan keputusan akhir.</desc>
+  <defs>
+    <style>
+      .page{fill:#fff;stroke:#1e293b;stroke-width:8}.bar{fill:#f97316;stroke:#1e293b;stroke-width:8}
+      .title{font-family:Arial,Helvetica,sans-serif;font-size:42px;font-weight:700;fill:#fff;text-anchor:middle}.sub{font-family:Arial,Helvetica,sans-serif;font-size:20px;fill:#475569;text-anchor:middle}
+      .boundary{fill:#fff;stroke:#334155;stroke-width:5}.group{fill:#f8fafc;stroke:#cbd5e1;stroke-width:3;stroke-dasharray:13 9;rx:16}.group-title{font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700;fill:#475569;letter-spacing:1px}.sys{font-family:Arial,Helvetica,sans-serif;font-size:27px;font-weight:700;fill:#0f172a;text-anchor:middle}
+      .uc{fill:#fff;stroke:#334155;stroke-width:4.5}.user{fill:#eff6ff;stroke:#2563eb;stroke-width:4.5}.admin{fill:#fff7ed;stroke:#c2410c;stroke-width:4.5}.legal{fill:#f5f3ff;stroke:#7c3aed;stroke-width:4.5}.super{fill:#fdf2f8;stroke:#be185d;stroke-width:4.5}.system{fill:#ecfeff;stroke:#0f766e;stroke-width:4.5}
+      .t{font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700;fill:#0f172a;text-anchor:middle;dominant-baseline:middle}.ts{font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700;fill:#0f172a;text-anchor:middle;dominant-baseline:middle}
+      .actor{fill:none;stroke:#0f172a;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.al{font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;fill:#0f172a;text-anchor:middle}
+      .assoc{fill:none;stroke:#334155;stroke-width:4;stroke-linecap:round}.include{fill:none;stroke:#0f766e;stroke-width:3.5;stroke-dasharray:12 9;marker-end:url(#arrow-teal)}.extend{fill:none;stroke:#7e22ce;stroke-width:3.5;stroke-dasharray:12 9;marker-end:url(#arrow-purple)}
+      .il{font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;fill:#0f766e;text-anchor:middle}.el{font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;fill:#6b21a8;text-anchor:middle}.legend{font-family:Arial,Helvetica,sans-serif;font-size:17px;fill:#334155}
+      .note{fill:#fffbeb;stroke:#d97706;stroke-width:3.5;rx:12}.warn{fill:#fff1f2;stroke:#e11d48;stroke-width:3.5;rx:12}.nt{font-family:Arial,Helvetica,sans-serif;font-size:17px;fill:#78350f}.wt{font-family:Arial,Helvetica,sans-serif;font-size:17px;fill:#9f1239}
+    </style>
+    <marker id="arrow-teal" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#0f766e" stroke-width="2"/></marker>
+    <marker id="arrow-purple" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#7e22ce" stroke-width="2"/></marker>
+    <g id="person"><circle class="actor" cx="0" cy="-42" r="22"/><path class="actor" d="M0 -20 L0 45 M-34 3 L0 3 L34 3 M0 45 L-30 85 M0 45 L30 85"/></g>
+  </defs>
+
+  <rect class="page" x="20" y="20" width="7160" height="4560"/><rect class="bar" x="20" y="20" width="7160" height="115"/>
+  <text class="title" x="3600" y="88">USE CASE DIAGRAM — PORTAL KEBIJAKAN</text>
+  <text class="sub" x="3600" y="180">Versi revisi dengan empat role: User, Admin, Tim Hukum, dan Super Admin</text>
+
+  <ellipse class="user" cx="400" cy="245" rx="105" ry="32"/><text class="legend" x="540" y="252">Use case</text>
+  <line class="assoc" x1="790" y1="245" x2="940" y2="245"/><text class="legend" x="970" y="252">asosiasi aktor</text>
+  <line class="include" x1="1270" y1="245" x2="1415" y2="245"/><text class="legend" x="1450" y="252">&lt;&lt;include&gt;&gt;</text>
+  <line class="extend" x1="1750" y1="245" x2="1895" y2="245"/><text class="legend" x="1930" y="252">&lt;&lt;extend&gt;&gt;</text>
+
+  <rect class="boundary" x="650" y="330" width="5850" height="3950"/><text class="sys" x="3575" y="390">SISTEM PORTAL KEBIJAKAN KEMENTERIAN LUAR NEGERI</text>
+  <rect class="group" x="820" y="465" width="5480" height="880"/><text class="group-title" x="900" y="525">AUTENTIKASI DAN AKUN — BERLAKU UNTUK SELURUH ROLE</text>
+  <rect class="group" x="820" y="1430" width="3420" height="2350"/><text class="group-title" x="900" y="1490">LAYANAN USER DAN ADMIN</text>
+  <rect class="group" x="4300" y="1430" width="1970" height="2350"/><text class="group-title" x="4380" y="1490">TIM HUKUM DAN SUPER ADMIN</text>
+
+  <!-- All associations and dependencies are placed behind shapes -->
+  <g id="links">
+    <!-- User associations -->
+    <path class="assoc" d="M390 1800 L1300 1600"/><path class="assoc" d="M390 1850 L2650 1600"/>
+    <path class="assoc" d="M390 1900 L1300 2100"/><path class="assoc" d="M390 1950 L850 1950 L850 2270 L2650 2270 L2650 2100"/>
+    <!-- Admin associations -->
+    <path class="assoc" d="M390 2900 L1200 2900"/><path class="assoc" d="M390 2950 L1200 3400"/><path class="assoc" d="M390 3000 L2850 3150"/>
+    <!-- Tim Hukum associations -->
+    <path class="assoc" d="M6810 1800 L5400 1600"/><path class="assoc" d="M6810 1850 L5400 2000"/>
+    <!-- Super Admin associations -->
+    <path class="assoc" d="M6810 2900 L5300 2900"/><path class="assoc" d="M6810 2950 L6150 2900"/>
+    <path class="assoc" d="M6810 3000 L5350 3400"/><path class="assoc" d="M6810 3050 L6150 3400"/>
+    <!-- Admin internal behaviour -->
+    <path class="extend" d="M4050 2950 L3550 3150"/><text class="el" x="3820" y="3000">&lt;&lt;extend&gt;&gt; [disetujui]</text>
+    <path class="include" d="M3550 3215 L4050 3400"/><text class="il" x="3820" y="3360">&lt;&lt;include&gt;&gt;</text>
+    <path class="extend" d="M2750 3600 L2000 3400"/><text class="el" x="2380" y="3590">&lt;&lt;extend&gt;&gt; [opsional]</text>
+    <!-- Tim Hukum behaviour -->
+    <path class="include" d="M5400 2030 L5630 2200"/><text class="il" x="5510" y="2110">&lt;&lt;include&gt;&gt;</text>
+    <path class="include" d="M5050 2065 L5050 2342"/><text class="il" x="5140" y="2200">&lt;&lt;include&gt;&gt;</text>
+    <path class="extend" d="M4680 2400 L5050 2065"/><text class="el" x="4640" y="2220">&lt;&lt;extend&gt;&gt; [lolos]</text>
+    <path class="extend" d="M5570 2420 L5350 2065"/><text class="el" x="5750" y="2220">&lt;&lt;extend&gt;&gt; [perlu revisi]</text>
+    <!-- Super Admin audit -->
+    <path class="include" d="M5050 2965 L5050 2460"/><text class="il" x="5140" y="2700">&lt;&lt;include&gt;&gt;</text>
+  </g>
+
+  <!-- Four role actors only -->
+  <g transform="translate(270 1900)"><use href="#person"/><text class="al" x="0" y="120">User</text></g>
+  <g transform="translate(270 3000)"><use href="#person"/><text class="al" x="0" y="120">Admin</text></g>
+  <g transform="translate(6930 1850)"><use href="#person"/><text class="al" x="0" y="120">Tim Hukum</text></g>
+  <g transform="translate(6930 3000)"><use href="#person"/><text class="al" x="0" y="120">Super Admin</text></g>
+
+  <!-- Shared authentication and account use cases -->
+  <g id="account">
+    <ellipse class="uc" cx="1600" cy="650" rx="310" ry="65"/><text class="t" x="1600" y="642">Login Manual</text><text class="ts" x="1600" y="666">email, kata sandi, reCAPTCHA</text>
+    <ellipse class="uc" cx="2850" cy="650" rx="280" ry="65"/><text class="t" x="2850" y="650">Login Google SSO</text>
+    <ellipse class="uc" cx="4100" cy="650" rx="280" ry="65"/><text class="t" x="4100" y="642">Registrasi User</text><text class="ts" x="4100" y="666">role awal: user</text>
+    <ellipse class="uc" cx="5350" cy="650" rx="330" ry="65"/><text class="t" x="5350" y="642">Reset Kata Sandi</text><text class="ts" x="5350" y="666">OTP melalui email</text>
+    <ellipse class="user" cx="2200" cy="1030" rx="280" ry="62"/><text class="t" x="2200" y="1030">Kelola Profil</text>
+    <ellipse class="user" cx="3500" cy="1030" rx="300" ry="62"/><text class="t" x="3500" y="1030">Ganti Kata Sandi</text>
+    <ellipse class="user" cx="4750" cy="1030" rx="160" ry="62"/><text class="t" x="4750" y="1030">Logout</text>
+    <text class="ts" x="3600" y="1210">Prasyarat fungsi operasional: seluruh role telah melakukan login dan sistem mengarahkan ke dasbor sesuai role.</text>
+  </g>
+
+  <!-- User use cases -->
+  <g id="user-usecases">
+    <ellipse class="user" cx="1650" cy="1600" rx="350" ry="65"/><text class="t" x="1650" y="1592">Akses Arsip Kebijakan</text><text class="ts" x="1650" y="1616">MoU/PKS, TIK Kemlu, TIK Non-Kemlu</text>
+    <ellipse class="user" cx="3000" cy="1600" rx="350" ry="65"/><text class="t" x="3000" y="1592">Baca Berita Disetujui</text><text class="ts" x="3000" y="1616">dan melihat detail artikel</text>
+    <ellipse class="user" cx="1650" cy="2100" rx="350" ry="65"/><text class="t" x="1650" y="2092">Ajukan Janji Temu</text><text class="ts" x="1650" y="2116">dengan verifikasi reCAPTCHA</text>
+    <ellipse class="user" cx="3000" cy="2100" rx="350" ry="65"/><text class="t" x="3000" y="2092">Lihat Status Janji Temu</text><text class="ts" x="3000" y="2116">jadwal atau alasan penolakan</text>
+  </g>
+
+  <!-- Admin use cases -->
+  <g id="admin-usecases">
+    <ellipse class="admin" cx="1600" cy="2900" rx="400" ry="68"/><text class="t" x="1600" y="2892">Kelola Draf Kebijakan</text><text class="ts" x="1600" y="2916">ajukan, revisi, dan lihat riwayat</text>
+    <ellipse class="admin" cx="1600" cy="3400" rx="400" ry="68"/><text class="t" x="1600" y="3392">Kelola Draf Berita</text><text class="ts" x="1600" y="3416">tulis, revisi, dan ajukan untuk review</text>
+    <ellipse class="admin" cx="3200" cy="3150" rx="350" ry="68"/><text class="t" x="3200" y="3142">Proses Janji Temu</text><text class="ts" x="3200" y="3166">setujui atau tolak pengajuan</text>
+    <ellipse class="system" cx="4300" cy="2950" rx="250" ry="58"/><text class="t" x="4300" y="2942">Atur Jadwal</text><text class="ts" x="4300" y="2966">dan detail meeting</text>
+    <ellipse class="system" cx="4300" cy="3400" rx="280" ry="58"/><text class="t" x="4300" y="3400">Kirim Notifikasi Email</text>
+    <ellipse class="system" cx="3000" cy="3650" rx="250" ry="58"/><text class="t" x="3000" y="3642">Bantuan Groq AI</text><text class="ts" x="3000" y="3666">opsional untuk berita</text>
+  </g>
+
+  <!-- Tim Hukum use cases -->
+  <g id="legal-usecases">
+    <ellipse class="legal" cx="5050" cy="1600" rx="350" ry="65"/><text class="t" x="5050" y="1592">Lihat Antrean dan Riwayat</text><text class="ts" x="5050" y="1616">dokumen pending_hukum</text>
+    <ellipse class="legal" cx="5050" cy="2000" rx="350" ry="65"/><text class="t" x="5050" y="1992">Verifikasi Legalitas Dokumen</text><text class="ts" x="5050" y="2016">klausul, regulasi, dan kesesuaian</text>
+    <ellipse class="system" cx="5900" cy="2200" rx="270" ry="58"/><text class="t" x="5900" y="2192">Buat / Unggah</text><text class="ts" x="5900" y="2216">Berita Acara</text>
+    <ellipse class="system" cx="5050" cy="2400" rx="290" ry="58"/><text class="t" x="5050" y="2392">Catat Audit Aktivitas</text><text class="ts" x="5050" y="2416">hasil verifikasi</text>
+    <ellipse class="legal" cx="4400" cy="2400" rx="280" ry="58"/><text class="t" x="4400" y="2400">Teruskan ke Super Admin</text>
+    <ellipse class="legal" cx="5850" cy="2420" rx="280" ry="58"/><text class="t" x="5850" y="2412">Kembalikan untuk</text><text class="ts" x="5850" y="2436">Revisi Hukum</text>
+  </g>
+
+  <!-- Super Admin use cases -->
+  <g id="super-usecases">
+    <ellipse class="super" cx="5050" cy="2900" rx="300" ry="65"/><text class="t" x="5050" y="2892">Tinjau Kebijakan</text><text class="ts" x="5050" y="2916">setujui, revisi, atau tolak</text>
+    <ellipse class="super" cx="5900" cy="2900" rx="250" ry="65"/><text class="t" x="5900" y="2892">Tinjau Berita</text><text class="ts" x="5900" y="2916">approve, revisi, atau tolak</text>
+    <ellipse class="super" cx="5000" cy="3400" rx="350" ry="65"/><text class="t" x="5000" y="3392">Kelola Akun Admin</text><text class="ts" x="5000" y="3416">dan Tim Hukum</text>
+    <ellipse class="super" cx="5900" cy="3400" rx="250" ry="65"/><text class="t" x="5900" y="3392">Lihat Dasbor</text><text class="ts" x="5900" y="3416">rekap, analitik, dan log</text>
+  </g>
+
+  <!-- Notes -->
+  <rect class="warn" x="820" y="3910" width="2800" height="260"/><text class="wt" x="875" y="3970">Diagram hanya memakai empat aktor sesuai role aplikasi: User, Admin, Tim Hukum, dan Super Admin.</text><text class="wt" x="875" y="4025">TOTP tidak ditampilkan karena belum ada alur autentikasi TOTP pada route/controller; autentikasi memakai reCAPTCHA dan Google SSO.</text><text class="wt" x="875" y="4080">Akses arsip kebijakan menggantikan “View Public Policies” karena implementasi saat ini belum memfilter arsip berdasarkan status publik.</text>
+  <rect class="note" x="3820" y="3910" width="2450" height="260"/><text class="nt" x="3875" y="3970">Activity Log hanya dipanggil pada verifikasi Tim Hukum dan tinjauan kebijakan oleh Super Admin.</text><text class="nt" x="3875" y="4025">Super Admin juga memiliki akses ke fungsi Admin pada rute yang menggunakan middleware role:admin,super_admin.</text><text class="nt" x="3875" y="4080">Gunakan garis putus-putus untuk relasi include/extend; aktivitas internal tidak dihubungkan ke seluruh use case secara umum.</text>
+</svg>

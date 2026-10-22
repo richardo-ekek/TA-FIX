@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2700" height="2260" viewBox="0 0 2700 2260" role="img" aria-labelledby="diagram-title diagram-desc">
+  <title id="diagram-title">Activity Diagram — Pengajuan Janji Temu oleh User</title>
+  <desc id="diagram-desc">Diagram aktivitas pengguna berperan user ketika mengajukan janji temu. Diagram mencakup pengisian formulir, validasi data, reCAPTCHA, penyimpanan pengajuan dengan status submitted, dan pengalihan ke dashboard.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#1e293b"/>
+    </marker>
+    <style>
+      .frame { fill:#ffffff; stroke:#1e293b; stroke-width:3; }
+      .titlebar { fill:#f97316; stroke:#1e293b; stroke-width:3; }
+      .lanehead { fill:#f8fafc; stroke:#1e293b; stroke-width:3; }
+      .userlane { fill:#fffdf9; stroke:#cbd5e1; stroke-width:2; }
+      .systemlane { fill:#f8fbff; stroke:#cbd5e1; stroke-width:2; }
+      .usernode { fill:#ffffff; stroke:#475569; stroke-width:3; }
+      .systemnode { fill:#eff6ff; stroke:#2563eb; stroke-width:3; }
+      .successnode { fill:#ecfdf5; stroke:#059669; stroke-width:3; }
+      .errornode { fill:#fff1f2; stroke:#e11d48; stroke-width:3; }
+      .notenode { fill:#fffbeb; stroke:#d97706; stroke-width:2.5; }
+      .node { rx:16; ry:16; }
+      .decision { fill:#ffffff; stroke:#334155; stroke-width:3; }
+      .flow { fill:none; stroke:#1e293b; stroke-width:3.5; marker-end:url(#arrow); stroke-linejoin:round; stroke-linecap:round; }
+      .return { fill:none; stroke:#be123c; stroke-width:2.6; stroke-dasharray:9 7; marker-end:url(#arrow); stroke-linejoin:round; stroke-linecap:round; }
+      .title { font-family:Arial, Helvetica, sans-serif; font-size:37px; font-weight:700; fill:#ffffff; text-anchor:middle; }
+      .lane-title { font-family:Arial, Helvetica, sans-serif; font-size:31px; font-weight:700; fill:#0f172a; text-anchor:middle; }
+      .body { font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:600; fill:#0f172a; text-anchor:middle; }
+      .small { font-family:Arial, Helvetica, sans-serif; font-size:19px; font-weight:600; fill:#0f172a; text-anchor:middle; }
+      .branch { font-family:Arial, Helvetica, sans-serif; font-size:19px; font-weight:700; fill:#1d4ed8; }
+      .yes { font-family:Arial, Helvetica, sans-serif; font-size:18px; font-weight:700; fill:#047857; }
+      .no { font-family:Arial, Helvetica, sans-serif; font-size:18px; font-weight:700; fill:#be123c; }
+      .foot { font-family:Arial, Helvetica, sans-serif; font-size:17px; fill:#334155; }
+    </style>
+  </defs>
+
+  <!-- Frame and vertical swimlanes -->
+  <rect class="frame" x="15" y="15" width="2670" height="2230"/>
+  <rect class="titlebar" x="15" y="15" width="2670" height="88"/>
+  <text class="title" x="1350" y="72">ACTIVITY DIAGRAM — PENGAJUAN JANJI TEMU OLEH USER</text>
+  <rect class="lanehead" x="15" y="103" width="930" height="64"/>
+  <rect class="lanehead" x="945" y="103" width="1740" height="64"/>
+  <text class="lane-title" x="480" y="144">Pengguna (role: user)</text>
+  <text class="lane-title" x="1815" y="144">Sistem</text>
+  <rect class="userlane" x="15" y="167" width="930" height="1975"/>
+  <rect class="systemlane" x="945" y="167" width="1740" height="1975"/>
+
+  <!-- Start and open form -->
+  <circle cx="110" cy="245" r="22" fill="#111827"/>
+  <line class="flow" x1="132" y1="245" x2="190" y2="245"/>
+  <rect class="usernode node" x="195" y="200" width="470" height="90"/>
+  <text class="body" x="430" y="234"><tspan x="430">Akses Dashboard</tspan><tspan x="430" dy="27">Pengguna</tspan></text>
+  <path class="flow" d="M665 245 H800 V420 H665"/>
+  <rect class="usernode node" x="195" y="375" width="470" height="90"/>
+  <text class="body" x="430" y="409"><tspan x="430">Klik “Ajukan</tspan><tspan x="430" dy="27">Appointment Baru”</tspan></text>
+  <line class="flow" x1="665" y1="420" x2="1170" y2="420"/>
+  <rect class="systemnode node" x="1180" y="375" width="460" height="90"/>
+  <text class="body" x="1410" y="409"><tspan x="1410">Tampilkan formulir</tspan><tspan x="1410" dy="27">pengajuan janji temu</tspan></text>
+
+  <!-- User fills the one form, grouped in a clean panel -->
+  <path class="flow" d="M1180 420 H800 V585 H665"/>
+  <rect class="usernode node" x="135" y="510" width="590" height="150"/>
+  <text class="body" x="430" y="545"><tspan x="430">Isi data pengajuan:</tspan><tspan x="430" dy="26">kategori pemohon, instansi, alamat,</tspan><tspan x="430" dy="26">tujuan, detail tujuan, metode pertemuan,</tspan><tspan x="430" dy="26">dan preferensi waktu (opsional)</tspan></text>
+  <path class="flow" d="M430 660 V715"/>
+  <rect class="usernode node" x="135" y="720" width="590" height="90"/>
+  <text class="body" x="430" y="754"><tspan x="430">Selesaikan verifikasi</tspan><tspan x="430" dy="27">Google reCAPTCHA</tspan></text>
+  <path class="flow" d="M430 810 V865"/>
+  <rect class="usernode node" x="135" y="870" width="590" height="80"/>
+  <text class="body" x="430" y="919">Klik “Kirim Pengajuan”</text>
+
+  <!-- Server validation with local failure branch -->
+  <line class="flow" x1="725" y1="910" x2="1170" y2="910"/>
+  <rect class="systemnode node" x="1180" y="865" width="460" height="90"/>
+  <text class="body" x="1410" y="899"><tspan x="1410">Validasi field wajib, opsi</tspan><tspan x="1410" dy="27">dan format data pengajuan</tspan></text>
+  <path class="flow" d="M1410 955 V995"/>
+  <polygon class="decision" points="1410,995 1550,1065 1410,1135 1270,1065"/>
+  <text class="small" x="1410" y="1058"><tspan x="1410">Data formulir</tspan><tspan x="1410" dy="23">valid?</tspan></text>
+  <text class="no" x="1570" y="1048">[Tidak]</text>
+  <path class="flow" d="M1550 1065 H1680"/>
+  <rect class="errornode node" x="1690" y="1020" width="410" height="90"/>
+  <text class="small" x="1895" y="1052"><tspan x="1895">Tampilkan error validasi;</tspan><tspan x="1895" dy="23">data sebelumnya tetap tersedia</tspan></text>
+  <path class="return" d="M1895 1110 H2250 V485 H725 V720"/>
+  <text class="no" x="1950" y="470">Kembali ke formulir untuk diperbaiki</text>
+
+  <!-- reCAPTCHA API check with its own clean local failure -->
+  <text class="yes" x="1432" y="1162">[Ya]</text>
+  <path class="flow" d="M1410 1135 V1185"/>
+  <rect class="systemnode node" x="1180" y="1190" width="460" height="90"/>
+  <text class="body" x="1410" y="1224"><tspan x="1410">Verifikasi token ke</tspan><tspan x="1410" dy="27">Google reCAPTCHA API</tspan></text>
+  <path class="flow" d="M1410 1280 V1320"/>
+  <polygon class="decision" points="1410,1320 1550,1390 1410,1460 1270,1390"/>
+  <text class="small" x="1410" y="1383"><tspan x="1410">reCAPTCHA</tspan><tspan x="1410" dy="23">berhasil?</tspan></text>
+  <text class="no" x="1570" y="1373">[Tidak]</text>
+  <path class="flow" d="M1550 1390 H1680"/>
+  <rect class="errornode node" x="1690" y="1345" width="410" height="90"/>
+  <text class="small" x="1895" y="1377"><tspan x="1895">Tampilkan error reCAPTCHA;</tspan><tspan x="1895" dy="23">kembali ke formulir</tspan></text>
+  <path class="return" d="M1895 1435 H2380 V500 H755 V810 H725"/>
+  <text class="no" x="1950" y="520">Kembali ke formulir untuk menyelesaikan reCAPTCHA</text>
+
+  <!-- Successful storage and redirect -->
+  <text class="yes" x="1432" y="1487">[Ya]</text>
+  <path class="flow" d="M1410 1460 V1510"/>
+  <rect class="systemnode node" x="1125" y="1515" width="570" height="105"/>
+  <text class="body" x="1410" y="1548"><tspan x="1410">Ambil user_id dan nama dari sesi login;</tspan><tspan x="1410" dy="27">buat data janji temu dengan status: submitted</tspan></text>
+  <path class="flow" d="M1410 1620 V1665"/>
+  <rect class="successnode node" x="1125" y="1670" width="570" height="90"/>
+  <text class="body" x="1410" y="1703"><tspan x="1410">Alihkan ke Dashboard Pengguna</tspan><tspan x="1410" dy="27">dengan pesan pengajuan berhasil</tspan></text>
+  <path class="flow" d="M1410 1760 V1800"/>
+  <rect class="successnode node" x="1125" y="1805" width="570" height="80"/>
+  <text class="body" x="1410" y="1854">Tampilkan riwayat janji temu: submitted</text>
+  <path class="flow" d="M1410 1885 V1925"/>
+  <circle cx="1410" cy="1965" r="29" fill="#ffffff" stroke="#111827" stroke-width="4"/>
+  <circle cx="1410" cy="1965" r="19" fill="#111827"/>
+
+  <!-- Implementation facts -->
+  <rect class="notenode node" x="90" y="2030" width="2500" height="88"/>
+  <text class="foot" x="1340" y="2061"><tspan x="1340" font-weight="700">Catatan implementasi:</tspan><tspan x="1340" dy="23"> rute pengajuan dilindungi middleware auth dan role:user. Data yang tersimpan: kategori pemohon, identitas pengajuan, metode daring/luring,</tspan><tspan x="1340" dy="20">preferensi waktu (opsional), serta status awal submitted. Persetujuan atau penolakan selanjutnya diproses oleh admin.</tspan></text>
+</svg>

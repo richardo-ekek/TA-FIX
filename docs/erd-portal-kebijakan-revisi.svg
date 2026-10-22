@@ -1,0 +1,353 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="5100" height="3300" viewBox="0 0 5100 3300" role="img" aria-labelledby="erd-title erd-desc">
+  <title id="erd-title">ERD Portal Kebijakan — Revisi sesuai migrasi proyek</title>
+  <desc id="erd-desc">Entity relationship diagram domain Portal Kebijakan yang menampilkan users, profil, reset password, sesi, appointment, berita, activity log, dan tiga tabel kebijakan beserta foreign key serta referensi logisnya.</desc>
+  <defs>
+    <style>
+      .page { fill:#ffffff; stroke:#1e293b; stroke-width:3; }
+      .titlebar { fill:#f97316; stroke:#1e293b; stroke-width:3; }
+      .head { fill:#0f172a; }
+      .head-user { fill:#2563eb; }
+      .head-profile { fill:#7c3aed; }
+      .head-auth { fill:#475569; }
+      .head-log { fill:#b45309; }
+      .head-appointment { fill:#4f46e5; }
+      .head-news { fill:#db2777; }
+      .head-policy { fill:#a16207; }
+      .box { fill:#ffffff; stroke:#334155; stroke-width:3; }
+      .rowline { stroke:#cbd5e1; stroke-width:1.5; }
+      .name { font-family:Arial, Helvetica, sans-serif; font-size:27px; font-weight:700; fill:#ffffff; }
+      .row { font-family:Arial, Helvetica, sans-serif; font-size:20px; fill:#0f172a; }
+      .row-small { font-family:Arial, Helvetica, sans-serif; font-size:18px; fill:#0f172a; }
+      .pk { fill:#b91c1c; font-weight:700; }
+      .fk { fill:#1d4ed8; font-weight:700; }
+      .ref { fill:#7c3aed; font-weight:700; }
+      .warn { fill:#be123c; font-weight:700; }
+      .title { font-family:Arial, Helvetica, sans-serif; font-size:40px; font-weight:700; fill:#ffffff; text-anchor:middle; }
+      .subtitle { font-family:Arial, Helvetica, sans-serif; font-size:20px; fill:#334155; text-anchor:middle; }
+      .legend { font-family:Arial, Helvetica, sans-serif; font-size:18px; fill:#334155; }
+      .rel { fill:none; stroke:#1e293b; stroke-width:3.5; stroke-linejoin:round; stroke-linecap:round; }
+      .logical { fill:none; stroke:#7c3aed; stroke-width:3.5; stroke-dasharray:12 10; stroke-linejoin:round; stroke-linecap:round; }
+      .relation-label { font-family:Arial, Helvetica, sans-serif; font-size:17px; font-weight:700; fill:#1e293b; }
+      .logical-label { font-family:Arial, Helvetica, sans-serif; font-size:17px; font-weight:700; fill:#6d28d9; }
+      .card { font-family:Arial, Helvetica, sans-serif; font-size:19px; font-weight:700; fill:#0f172a; }
+      .note { fill:#fffbeb; stroke:#d97706; stroke-width:2.5; }
+      .note-text { font-family:Arial, Helvetica, sans-serif; font-size:18px; fill:#78350f; }
+    </style>
+  </defs>
+
+  <rect class="page" x="15" y="15" width="5070" height="3270"/>
+  <rect class="titlebar" x="15" y="15" width="5070" height="90"/>
+  <text class="title" x="2550" y="73">ERD PORTAL KEBIJAKAN — REVISI BERDASARKAN MIGRATION PROYEK</text>
+  <text class="subtitle" x="2550" y="148">ERD domain: tabel cache, jobs, failed_jobs, dan migrations Laravel tidak ditampilkan. Garis penuh = FK database; garis putus-putus = referensi logis tanpa FK.</text>
+
+  <!-- Legend -->
+  <rect x="120" y="180" width="20" height="20" fill="#b91c1c"/><text class="legend" x="152" y="197">PK = primary key</text>
+  <rect x="400" y="180" width="20" height="20" fill="#1d4ed8"/><text class="legend" x="432" y="197">FK = foreign key terpasang</text>
+  <rect x="790" y="180" width="20" height="20" fill="#7c3aed"/><text class="legend" x="822" y="197">REF = referensi aplikasi / tanpa FK migration</text>
+  <rect x="1380" y="180" width="20" height="20" fill="#be123c"/><text class="legend" x="1412" y="197">⚠ ketidaksesuaian kode–migration</text>
+
+  <!-- user_profiles -->
+  <g>
+    <rect class="box" x="120" y="280" width="700" height="465" rx="12"/>
+    <path class="head-profile" d="M132 280 H808 Q820 280 820 292 V335 H120 V292 Q120 280 132 280 Z"/>
+    <text class="name" x="155" y="316">user_profiles</text>
+    <line class="rowline" x1="120" y1="380" x2="820" y2="380"/>
+    <line class="rowline" x1="120" y1="425" x2="820" y2="425"/>
+    <line class="rowline" x1="120" y1="470" x2="820" y2="470"/>
+    <line class="rowline" x1="120" y1="515" x2="820" y2="515"/>
+    <line class="rowline" x1="120" y1="560" x2="820" y2="560"/>
+    <line class="rowline" x1="120" y1="605" x2="820" y2="605"/>
+    <line class="rowline" x1="120" y1="650" x2="820" y2="650"/>
+    <line class="rowline" x1="120" y1="695" x2="820" y2="695"/>
+    <text class="row" x="150" y="368"><tspan class="pk">PK</tspan><tspan dx="12">id</tspan></text>
+    <text class="row" x="150" y="413"><tspan class="fk">FK</tspan><tspan dx="12">user_id → users.id (CASCADE, tidak UNIQUE)</tspan></text>
+    <text class="row" x="150" y="458">nama</text>
+    <text class="row" x="150" y="503">alamat nullable</text>
+    <text class="row" x="150" y="548">pekerjaan nullable</text>
+    <text class="row" x="150" y="593">tempat_lahir nullable</text>
+    <text class="row" x="150" y="638">tanggal_lahir nullable</text>
+    <text class="row" x="150" y="683">created_at, updated_at</text>
+  </g>
+
+  <!-- password_reset_tokens -->
+  <g>
+    <rect class="box" x="120" y="940" width="700" height="205" rx="12"/>
+    <path class="head-auth" d="M132 940 H808 Q820 940 820 952 V995 H120 V952 Q120 940 132 940 Z"/>
+    <text class="name" x="155" y="976">password_reset_tokens</text>
+    <line class="rowline" x1="120" y1="1040" x2="820" y2="1040"/>
+    <line class="rowline" x1="120" y1="1085" x2="820" y2="1085"/>
+    <text class="row" x="150" y="1028"><tspan class="pk">PK</tspan><tspan dx="12">email (kecocokan logis ke users.email)</tspan></text>
+    <text class="row" x="150" y="1073">token</text>
+    <text class="row" x="150" y="1118">created_at nullable</text>
+  </g>
+
+  <!-- sessions -->
+  <g>
+    <rect class="box" x="120" y="1300" width="700" height="275" rx="12"/>
+    <path class="head-auth" d="M132 1300 H808 Q820 1300 820 1312 V1355 H120 V1312 Q120 1300 132 1300 Z"/>
+    <text class="name" x="155" y="1336">sessions</text>
+    <line class="rowline" x1="120" y1="1400" x2="820" y2="1400"/>
+    <line class="rowline" x1="120" y1="1445" x2="820" y2="1445"/>
+    <line class="rowline" x1="120" y1="1490" x2="820" y2="1490"/>
+    <line class="rowline" x1="120" y1="1535" x2="820" y2="1535"/>
+    <text class="row" x="150" y="1388"><tspan class="pk">PK</tspan><tspan dx="12">id</tspan></text>
+    <text class="row" x="150" y="1433"><tspan class="ref">REF</tspan><tspan dx="12">user_id nullable (INDEX, tanpa FK)</tspan></text>
+    <text class="row" x="150" y="1478">ip_address, user_agent</text>
+    <text class="row" x="150" y="1523">payload</text>
+    <text class="row" x="150" y="1568">last_activity</text>
+  </g>
+
+  <!-- users -->
+  <g>
+    <rect class="box" x="1100" y="260" width="860" height="580" rx="12"/>
+    <path class="head-user" d="M1112 260 H1948 Q1960 260 1960 272 V315 H1100 V272 Q1100 260 1112 260 Z"/>
+    <text class="name" x="1135" y="296">users</text>
+    <line class="rowline" x1="1100" y1="360" x2="1960" y2="360"/>
+    <line class="rowline" x1="1100" y1="405" x2="1960" y2="405"/>
+    <line class="rowline" x1="1100" y1="450" x2="1960" y2="450"/>
+    <line class="rowline" x1="1100" y1="495" x2="1960" y2="495"/>
+    <line class="rowline" x1="1100" y1="540" x2="1960" y2="540"/>
+    <line class="rowline" x1="1100" y1="585" x2="1960" y2="585"/>
+    <line class="rowline" x1="1100" y1="630" x2="1960" y2="630"/>
+    <line class="rowline" x1="1100" y1="675" x2="1960" y2="675"/>
+    <line class="rowline" x1="1100" y1="720" x2="1960" y2="720"/>
+    <line class="rowline" x1="1100" y1="765" x2="1960" y2="765"/>
+    <text class="row" x="1130" y="348"><tspan class="pk">PK</tspan><tspan dx="12">id</tspan></text>
+    <text class="row" x="1130" y="393"><tspan class="warn">⚠</tspan><tspan dx="12">name — dipakai aplikasi, tetapi tidak dibuat migration</tspan></text>
+    <text class="row" x="1130" y="438"><tspan class="pk">UQ</tspan><tspan dx="12">email</tspan></text>
+    <text class="row" x="1130" y="483">password</text>
+    <text class="row" x="1130" y="528">role: user | admin | super_admin | tim_hukum</text>
+    <text class="row" x="1130" y="573">totp_secret nullable</text>
+    <text class="row" x="1130" y="618">google_id nullable</text>
+    <text class="row" x="1130" y="663">foto_profil nullable</text>
+    <text class="row" x="1130" y="708">remember_token nullable</text>
+    <text class="row" x="1130" y="753">created_at, updated_at</text>
+  </g>
+
+  <!-- activity_logs -->
+  <g>
+    <rect class="box" x="1100" y="1010" width="860" height="510" rx="12"/>
+    <path class="head-log" d="M1112 1010 H1948 Q1960 1010 1960 1022 V1065 H1100 V1022 Q1100 1010 1112 1010 Z"/>
+    <text class="name" x="1135" y="1046">activity_logs</text>
+    <line class="rowline" x1="1100" y1="1110" x2="1960" y2="1110"/>
+    <line class="rowline" x1="1100" y1="1150" x2="1960" y2="1150"/>
+    <line class="rowline" x1="1100" y1="1190" x2="1960" y2="1190"/>
+    <line class="rowline" x1="1100" y1="1230" x2="1960" y2="1230"/>
+    <line class="rowline" x1="1100" y1="1270" x2="1960" y2="1270"/>
+    <line class="rowline" x1="1100" y1="1310" x2="1960" y2="1310"/>
+    <line class="rowline" x1="1100" y1="1350" x2="1960" y2="1350"/>
+    <line class="rowline" x1="1100" y1="1390" x2="1960" y2="1390"/>
+    <line class="rowline" x1="1100" y1="1430" x2="1960" y2="1430"/>
+    <line class="rowline" x1="1100" y1="1470" x2="1960" y2="1470"/>
+    <text class="row" x="1130" y="1098"><tspan class="pk">PK</tspan><tspan dx="12">id</tspan></text>
+    <text class="row" x="1130" y="1138"><tspan class="fk">FK</tspan><tspan dx="12">user_id → users.id (CASCADE)</tspan></text>
+    <text class="row" x="1130" y="1178">action (wajib)</text>
+    <text class="row" x="1130" y="1218"><tspan class="ref">REF</tspan><tspan dx="12">model_type + model_id (morphs, wajib)</tspan></text>
+    <text class="row" x="1130" y="1258">snapshot JSON (wajib)</text>
+    <text class="row" x="1130" y="1298">admin_name nullable</text>
+    <text class="row" x="1130" y="1338">kategori_dokumen, perihal_dokumen nullable</text>
+    <text class="row" x="1130" y="1378">aksi nullable</text>
+    <text class="row" x="1130" y="1418">catatan nullable</text>
+    <text class="row" x="1130" y="1458">created_at, updated_at</text>
+  </g>
+
+  <!-- appointments -->
+  <g>
+    <rect class="box" x="1100" y="1730" width="860" height="1030" rx="12"/>
+    <path class="head-appointment" d="M1112 1730 H1948 Q1960 1730 1960 1742 V1785 H1100 V1742 Q1100 1730 1112 1730 Z"/>
+    <text class="name" x="1135" y="1766">appointments</text>
+    <g class="rowline">
+      <line x1="1100" y1="1830" x2="1960" y2="1830"/><line x1="1100" y1="1872" x2="1960" y2="1872"/>
+      <line x1="1100" y1="1914" x2="1960" y2="1914"/><line x1="1100" y1="1956" x2="1960" y2="1956"/>
+      <line x1="1100" y1="1998" x2="1960" y2="1998"/><line x1="1100" y1="2040" x2="1960" y2="2040"/>
+      <line x1="1100" y1="2082" x2="1960" y2="2082"/><line x1="1100" y1="2124" x2="1960" y2="2124"/>
+      <line x1="1100" y1="2166" x2="1960" y2="2166"/><line x1="1100" y1="2208" x2="1960" y2="2208"/>
+      <line x1="1100" y1="2250" x2="1960" y2="2250"/><line x1="1100" y1="2292" x2="1960" y2="2292"/>
+      <line x1="1100" y1="2334" x2="1960" y2="2334"/><line x1="1100" y1="2376" x2="1960" y2="2376"/>
+      <line x1="1100" y1="2418" x2="1960" y2="2418"/><line x1="1100" y1="2460" x2="1960" y2="2460"/>
+      <line x1="1100" y1="2502" x2="1960" y2="2502"/><line x1="1100" y1="2544" x2="1960" y2="2544"/>
+      <line x1="1100" y1="2586" x2="1960" y2="2586"/><line x1="1100" y1="2628" x2="1960" y2="2628"/>
+      <line x1="1100" y1="2670" x2="1960" y2="2670"/><line x1="1100" y1="2712" x2="1960" y2="2712"/>
+    </g>
+    <text class="row-small" x="1130" y="1818"><tspan class="pk">PK</tspan><tspan dx="12">id</tspan></text>
+    <text class="row-small" x="1130" y="1860"><tspan class="fk">FK</tspan><tspan dx="12">user_id → users.id (CASCADE)</tspan></text>
+    <text class="row-small" x="1130" y="1902"><tspan class="fk">FK</tspan><tspan dx="12">admin_id → users.id (nullable, SET NULL)</tspan></text>
+    <text class="row-small" x="1130" y="1944">tipe_pemohon default institusi</text>
+    <text class="row-small" x="1130" y="1986">nama, instansi, alamat</text>
+    <text class="row-small" x="1130" y="2028">tujuan, detail_tujuan, mode</text>
+    <text class="row-small" x="1130" y="2070">preferensi_waktu nullable</text>
+    <text class="row-small" x="1130" y="2112">status</text>
+    <text class="row-small" x="1130" y="2154">link_meeting TEXT nullable</text>
+    <text class="row-small" x="1130" y="2196">alamat_pertemuan nullable</text>
+    <text class="row-small" x="1130" y="2238">detail_alamat_pertemuan nullable</text>
+    <text class="row-small" x="1130" y="2280">link_maps TEXT nullable</text>
+    <text class="row-small" x="1130" y="2322">tanggal_waktu_pertemuan nullable</text>
+    <text class="row-small" x="1130" y="2364">keterangan_tambahan nullable</text>
+    <text class="row-small" x="1130" y="2406">alasan_penolakan nullable</text>
+    <text class="row-small" x="1130" y="2448">file_berita_acara nullable</text>
+    <text class="row-small" x="1130" y="2490">catatan_pertemuan nullable</text>
+    <text class="row-small" x="1130" y="2532">created_at, updated_at</text>
+  </g>
+
+  <!-- beritas -->
+  <g>
+    <rect class="box" x="2250" y="260" width="840" height="720" rx="12"/>
+    <path class="head-news" d="M2262 260 H3078 Q3090 260 3090 272 V315 H2250 V272 Q2250 260 2262 260 Z"/>
+    <text class="name" x="2285" y="296">beritas</text>
+    <g class="rowline">
+      <line x1="2250" y1="360" x2="3090" y2="360"/><line x1="2250" y1="402" x2="3090" y2="402"/>
+      <line x1="2250" y1="444" x2="3090" y2="444"/><line x1="2250" y1="486" x2="3090" y2="486"/>
+      <line x1="2250" y1="528" x2="3090" y2="528"/><line x1="2250" y1="570" x2="3090" y2="570"/>
+      <line x1="2250" y1="612" x2="3090" y2="612"/><line x1="2250" y1="654" x2="3090" y2="654"/>
+      <line x1="2250" y1="696" x2="3090" y2="696"/><line x1="2250" y1="738" x2="3090" y2="738"/>
+      <line x1="2250" y1="780" x2="3090" y2="780"/><line x1="2250" y1="822" x2="3090" y2="822"/>
+      <line x1="2250" y1="864" x2="3090" y2="864"/><line x1="2250" y1="906" x2="3090" y2="906"/>
+    </g>
+    <text class="row-small" x="2280" y="348"><tspan class="pk">PK</tspan><tspan dx="12">id</tspan></text>
+    <text class="row-small" x="2280" y="390"><tspan class="fk">FK</tspan><tspan dx="12">admin_id → users.id (CASCADE)</tspan></text>
+    <text class="row-small" x="2280" y="432">kategori</text>
+    <text class="row-small" x="2280" y="474">foto nullable</text>
+    <text class="row-small" x="2280" y="516">judul, tanggal, lokasi</text>
+    <text class="row-small" x="2280" y="558">lead, body, closing nullable</text>
+    <text class="row-small" x="2280" y="600">status VARCHAR, default pending</text>
+    <text class="row-small" x="2280" y="642">revisi_ke default 0</text>
+    <text class="row-small" x="2280" y="684">riwayat_revisi nullable</text>
+    <text class="row-small" x="2280" y="726">views default 0</text>
+    <text class="row-small" x="2280" y="768">alasan_penolakan nullable</text>
+    <text class="row-small" x="2280" y="810">created_at, updated_at</text>
+  </g>
+
+  <!-- mou_pks -->
+  <g>
+    <rect class="box" x="3450" y="230" width="1400" height="720" rx="12"/>
+    <path class="head-policy" d="M3462 230 H4838 Q4850 230 4850 242 V285 H3450 V242 Q3450 230 3462 230 Z"/>
+    <text class="name" x="3485" y="266">mou_pks</text>
+    <g class="rowline">
+      <line x1="3450" y1="330" x2="4850" y2="330"/><line x1="3450" y1="370" x2="4850" y2="370"/>
+      <line x1="3450" y1="410" x2="4850" y2="410"/><line x1="3450" y1="450" x2="4850" y2="450"/>
+      <line x1="3450" y1="490" x2="4850" y2="490"/><line x1="3450" y1="530" x2="4850" y2="530"/>
+      <line x1="3450" y1="570" x2="4850" y2="570"/><line x1="3450" y1="610" x2="4850" y2="610"/>
+      <line x1="3450" y1="650" x2="4850" y2="650"/><line x1="3450" y1="690" x2="4850" y2="690"/>
+      <line x1="3450" y1="730" x2="4850" y2="730"/><line x1="3450" y1="770" x2="4850" y2="770"/>
+      <line x1="3450" y1="810" x2="4850" y2="810"/><line x1="3450" y1="850" x2="4850" y2="850"/>
+      <line x1="3450" y1="890" x2="4850" y2="890"/>
+    </g>
+    <text class="row-small" x="3480" y="318"><tspan class="pk">PK</tspan><tspan dx="12">id</tspan></text>
+    <text class="row-small" x="3480" y="358"><tspan class="fk">FK</tspan><tspan dx="12">admin_id → users.id (nullable, SET NULL)</tspan></text>
+    <text class="row-small" x="3480" y="398"><tspan class="ref">REF</tspan><tspan dx="12">tim_hukum_id → users.id (nullable, tanpa FK)</tspan></text>
+    <text class="row-small" x="3480" y="438"><tspan class="ref">REF</tspan><tspan dx="12">super_admin_id → users.id (nullable, tanpa FK)</tspan></text>
+    <text class="row-small" x="3480" y="478">jenis, perihal</text>
+    <text class="row-small" x="3480" y="518">satker_kemlu, instansi_external</text>
+    <text class="row-small" x="3480" y="558">tanggal_disahkan, tanggal_berakhir nullable</text>
+    <text class="row-small" x="3480" y="598">status VARCHAR, file_berita_acara nullable</text>
+    <text class="row-small" x="3480" y="638">revisi_ke, riwayat_revisi nullable</text>
+    <text class="row-small" x="3480" y="678">keterangan, alasan_penolakan nullable</text>
+    <text class="row-small" x="3480" y="718">keterangan_tambahan nullable</text>
+    <text class="row-small" x="3480" y="758">views default 0</text>
+    <text class="row-small" x="3480" y="798">created_at, updated_at</text>
+  </g>
+
+  <!-- tik_kemlu -->
+  <g>
+    <rect class="box" x="3450" y="1120" width="1400" height="610" rx="12"/>
+    <path class="head-policy" d="M3462 1120 H4838 Q4850 1120 4850 1132 V1175 H3450 V1132 Q3450 1120 3462 1120 Z"/>
+    <text class="name" x="3485" y="1156">tik_kemlu</text>
+    <g class="rowline">
+      <line x1="3450" y1="1220" x2="4850" y2="1220"/><line x1="3450" y1="1260" x2="4850" y2="1260"/>
+      <line x1="3450" y1="1300" x2="4850" y2="1300"/><line x1="3450" y1="1340" x2="4850" y2="1340"/>
+      <line x1="3450" y1="1380" x2="4850" y2="1380"/><line x1="3450" y1="1420" x2="4850" y2="1420"/>
+      <line x1="3450" y1="1460" x2="4850" y2="1460"/><line x1="3450" y1="1500" x2="4850" y2="1500"/>
+      <line x1="3450" y1="1540" x2="4850" y2="1540"/><line x1="3450" y1="1580" x2="4850" y2="1580"/>
+      <line x1="3450" y1="1620" x2="4850" y2="1620"/><line x1="3450" y1="1660" x2="4850" y2="1660"/>
+    </g>
+    <text class="row-small" x="3480" y="1208"><tspan class="pk">PK</tspan><tspan dx="12">id</tspan></text>
+    <text class="row-small" x="3480" y="1248"><tspan class="fk">FK</tspan><tspan dx="12">admin_id → users.id (nullable, SET NULL)</tspan></text>
+    <text class="row-small" x="3480" y="1288"><tspan class="ref">REF</tspan><tspan dx="12">tim_hukum_id → users.id (nullable, tanpa FK)</tspan></text>
+    <text class="row-small" x="3480" y="1328"><tspan class="ref">REF</tspan><tspan dx="12">super_admin_id → users.id (nullable, tanpa FK)</tspan></text>
+    <text class="row-small" x="3480" y="1368">jenis_kebijakan, nomor_kebijakan, tahun, perihal</text>
+    <text class="row-small" x="3480" y="1408">tautan nullable</text>
+    <text class="row-small" x="3480" y="1448">status VARCHAR, file_berita_acara nullable</text>
+    <text class="row-small" x="3480" y="1488">revisi_ke, riwayat_revisi nullable</text>
+    <text class="row-small" x="3480" y="1528">alasan_penolakan, keterangan_tambahan nullable</text>
+    <text class="row-small" x="3480" y="1568">views default 0</text>
+    <text class="row-small" x="3480" y="1608">created_at, updated_at</text>
+  </g>
+
+  <!-- tik_non_kemlu -->
+  <g>
+    <rect class="box" x="3450" y="1880" width="1400" height="650" rx="12"/>
+    <path class="head-policy" d="M3462 1880 H4838 Q4850 1880 4850 1892 V1935 H3450 V1892 Q3450 1880 3462 1880 Z"/>
+    <text class="name" x="3485" y="1916">tik_non_kemlu</text>
+    <g class="rowline">
+      <line x1="3450" y1="1980" x2="4850" y2="1980"/><line x1="3450" y1="2020" x2="4850" y2="2020"/>
+      <line x1="3450" y1="2060" x2="4850" y2="2060"/><line x1="3450" y1="2100" x2="4850" y2="2100"/>
+      <line x1="3450" y1="2140" x2="4850" y2="2140"/><line x1="3450" y1="2180" x2="4850" y2="2180"/>
+      <line x1="3450" y1="2220" x2="4850" y2="2220"/><line x1="3450" y1="2260" x2="4850" y2="2260"/>
+      <line x1="3450" y1="2300" x2="4850" y2="2300"/><line x1="3450" y1="2340" x2="4850" y2="2340"/>
+      <line x1="3450" y1="2380" x2="4850" y2="2380"/><line x1="3450" y1="2420" x2="4850" y2="2420"/>
+      <line x1="3450" y1="2460" x2="4850" y2="2460"/>
+    </g>
+    <text class="row-small" x="3480" y="1968"><tspan class="pk">PK</tspan><tspan dx="12">id</tspan></text>
+    <text class="row-small" x="3480" y="2008"><tspan class="fk">FK</tspan><tspan dx="12">admin_id → users.id (nullable, SET NULL)</tspan></text>
+    <text class="row-small" x="3480" y="2048"><tspan class="ref">REF</tspan><tspan dx="12">tim_hukum_id → users.id (nullable, tanpa FK)</tspan></text>
+    <text class="row-small" x="3480" y="2088"><tspan class="ref">REF</tspan><tspan dx="12">super_admin_id → users.id (nullable, tanpa FK)</tspan></text>
+    <text class="row-small" x="3480" y="2128">jenis_kebijakan, nomor_kebijakan, tahun, perihal</text>
+    <text class="row-small" x="3480" y="2168">instansi, tautan nullable</text>
+    <text class="row-small" x="3480" y="2208">status VARCHAR, file_berita_acara nullable</text>
+    <text class="row-small" x="3480" y="2248">revisi_ke, riwayat_revisi nullable</text>
+    <text class="row-small" x="3480" y="2288">alasan_penolakan, keterangan_tambahan nullable</text>
+    <text class="row-small" x="3480" y="2328">views default 0</text>
+    <text class="row-small" x="3480" y="2368">created_at, updated_at</text>
+  </g>
+
+  <!-- Actual FK relationships -->
+  <path class="rel" d="M820 500 H1100"/>
+  <text class="card" x="850" y="486">0..N</text><text class="card" x="1068" y="486">1</text>
+  <text class="relation-label" x="865" y="535">memiliki profil (fisik DB)</text>
+
+  <path class="logical" d="M820 1040 H900 V620 H1100"/>
+  <text class="logical-label" x="510" y="925">reset OTP via email</text>
+  <path class="logical" d="M820 1435 H960 V680 H1100"/>
+  <text class="logical-label" x="510" y="1285">sesi login (INDEX saja)</text>
+
+  <path class="rel" d="M1530 840 V1010"/>
+  <text class="card" x="1545" y="885">1</text><text class="card" x="1545" y="990">0..N</text>
+  <text class="relation-label" x="1578" y="932">membuat log</text>
+
+  <path class="rel" d="M1100 700 H1010 V2160 H1100"/>
+  <text class="card" x="1025" y="735">1</text><text class="card" x="1025" y="2145">0..N</text>
+  <text class="relation-label" x="790" y="1675">mengajukan (user_id)</text>
+
+  <path class="rel" d="M1960 740 H2120 V2200 H1960"/>
+  <text class="card" x="1980" y="775">1</text><text class="card" x="1980" y="2180">0..N</text>
+  <text class="relation-label" x="1990" y="1665">memproses (admin_id)</text>
+
+  <path class="rel" d="M1960 500 H2250"/>
+  <text class="card" x="1980" y="486">1</text><text class="card" x="2200" y="486">0..N</text>
+  <text class="relation-label" x="2005" y="535">menulis berita (admin_id)</text>
+
+  <!-- Grouped owner relation to the three policy tables -->
+  <path class="rel" d="M1960 760 H2140 V1000 H3350"/>
+  <path class="rel" d="M3350 1000 V550 H3450"/>
+  <path class="rel" d="M3350 1000 V1320 H3450"/>
+  <path class="rel" d="M3350 1000 V2080 H3450"/>
+  <text class="card" x="1980" y="747">1</text>
+  <text class="card" x="3380" y="1035">0..N</text>
+  <text class="relation-label" x="2360" y="985">membuat kebijakan melalui admin_id (tiga tabel)</text>
+
+  <!-- References deliberately shown as a dashed bracket, because migrations did not add FKs -->
+  <path class="logical" d="M3410 400 V2240"/>
+  <path class="logical" d="M3410 400 H3450 M3410 1280 H3450 M3410 2040 H3450"/>
+  <text class="logical-label" x="3130" y="1025">reviewer refs</text>
+  <text class="logical-label" x="3060" y="1050">tim_hukum_id &amp;</text>
+  <text class="logical-label" x="3060" y="1075">super_admin_id</text>
+
+  <!-- Polymorphic log relation explanation -->
+  <path class="logical" d="M1960 1260 H2050 V1540 H3300"/>
+  <text class="logical-label" x="2055" y="1518">model_type + model_id dapat menunjuk model dokumen (polymorphic, tanpa FK)</text>
+
+  <!-- Notes -->
+  <rect class="note" x="120" y="2910" width="4730" height="155" rx="14"/>
+  <text class="note-text" x="155" y="2945"><tspan font-weight="700">Catatan perbaikan penting untuk proyek:</tspan><tspan x="155" dy="28">1) Model User menyatakan profil 1:1, tetapi user_profiles.user_id belum UNIQUE sehingga struktur fisiknya 1 : 0..N. 2) users.name digunakan model/controller namun tidak ada pada migration.</tspan><tspan x="155" dy="28">3) activity_logs memiliki action, morphs, dan snapshot yang wajib pada migration, sedangkan pemanggilan aplikasi saat ini tidak mengisinya; penyimpanan log dapat gagal sampai skema atau kode diselaraskan.</tspan><tspan x="155" dy="28">4) Tabel policy memiliki kolom reviewer, tetapi FK untuk tim_hukum_id dan super_admin_id belum dibuat migration.</tspan></text>
+  <text class="legend" x="120" y="3160">Sumber verifikasi: database/migrations dan model/controller proyek pada commit lokal yang sama dengan repositori yang diberikan.</text>
+</svg>

@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3300" height="2900" viewBox="0 0 3300 2900" role="img" aria-labelledby="diagram-title diagram-desc">
+  <title id="diagram-title">Activity Diagram — Tinjauan dan Publikasi Kebijakan oleh Super Admin</title>
+  <desc id="diagram-desc">Diagram aktivitas Super Admin dalam meninjau dokumen yang lolos verifikasi legalitas, menyetujui, meminta revisi, atau menolak dokumen kebijakan.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#1e293b"/>
+    </marker>
+    <style>
+      .frame { fill:#ffffff; stroke:#1e293b; stroke-width:3; }
+      .titlebar { fill:#f97316; stroke:#1e293b; stroke-width:3; }
+      .lanehead { fill:#f8fafc; stroke:#1e293b; stroke-width:3; }
+      .adminlane { fill:#fffdf9; stroke:#cbd5e1; stroke-width:2; }
+      .systemlane { fill:#f8fbff; stroke:#cbd5e1; stroke-width:2; }
+      .adminnode { fill:#ffffff; stroke:#475569; stroke-width:3; }
+      .systemnode { fill:#eff6ff; stroke:#2563eb; stroke-width:3; }
+      .approvednode { fill:#ecfdf5; stroke:#059669; stroke-width:3; }
+      .revisionnode { fill:#fff7ed; stroke:#d97706; stroke-width:3; }
+      .rejectnode { fill:#fff1f2; stroke:#e11d48; stroke-width:3; }
+      .notenode { fill:#fffbeb; stroke:#d97706; stroke-width:2.5; }
+      .node { rx:16; ry:16; }
+      .decision { fill:#ffffff; stroke:#334155; stroke-width:3; }
+      .flow { fill:none; stroke:#1e293b; stroke-width:3.5; marker-end:url(#arrow); stroke-linejoin:round; stroke-linecap:round; }
+      .title { font-family:Arial, Helvetica, sans-serif; font-size:36px; font-weight:700; fill:#ffffff; text-anchor:middle; }
+      .lane-title { font-family:Arial, Helvetica, sans-serif; font-size:31px; font-weight:700; fill:#0f172a; text-anchor:middle; }
+      .body { font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:600; fill:#0f172a; text-anchor:middle; }
+      .small { font-family:Arial, Helvetica, sans-serif; font-size:19px; font-weight:600; fill:#0f172a; text-anchor:middle; }
+      .branch { font-family:Arial, Helvetica, sans-serif; font-size:19px; font-weight:700; }
+      .approve { fill:#047857; }
+      .revise { fill:#b45309; }
+      .reject { fill:#be123c; }
+      .foot { font-family:Arial, Helvetica, sans-serif; font-size:17px; fill:#334155; }
+    </style>
+  </defs>
+
+  <!-- Page and swimlanes -->
+  <rect class="frame" x="15" y="15" width="3270" height="2870"/>
+  <rect class="titlebar" x="15" y="15" width="3270" height="88"/>
+  <text class="title" x="1650" y="72">ACTIVITY DIAGRAM — TINJAUAN &amp; PUBLIKASI KEBIJAKAN OLEH SUPER ADMIN</text>
+  <rect class="lanehead" x="15" y="103" width="1050" height="64"/>
+  <rect class="lanehead" x="1065" y="103" width="2220" height="64"/>
+  <text class="lane-title" x="540" y="144">Super Admin</text>
+  <text class="lane-title" x="2175" y="144">Sistem</text>
+  <rect class="adminlane" x="15" y="167" width="1050" height="2650"/>
+  <rect class="systemlane" x="1065" y="167" width="2220" height="2650"/>
+
+  <!-- Incoming queue and review -->
+  <circle cx="100" cy="245" r="22" fill="#111827"/>
+  <line class="flow" x1="122" y1="245" x2="175" y2="245"/>
+  <rect class="adminnode node" x="180" y="198" width="580" height="94"/>
+  <text class="body" x="470" y="234"><tspan x="470">Akses dashboard Super Admin</tspan><tspan x="470" dy="27">menu Tinjauan Kebijakan</tspan></text>
+
+  <line class="flow" x1="760" y1="245" x2="1320" y2="245"/>
+  <rect class="systemnode node" x="1320" y="198" width="840" height="94"/>
+  <text class="body" x="1740" y="234"><tspan x="1740">Ambil MoU/PKS, TIK Kemlu, dan TIK Non-Kemlu</tspan><tspan x="1740" dy="27">yang berstatus pending_superadmin</tspan></text>
+
+  <path class="flow" d="M1320 245 H940 V410 H790"/>
+  <rect class="adminnode node" x="170" y="365" width="620" height="90"/>
+  <text class="body" x="480" y="399"><tspan x="480">Pilih draf yang telah lolos</tspan><tspan x="480" dy="27">verifikasi Tim Hukum</tspan></text>
+
+  <line class="flow" x1="790" y1="410" x2="1320" y2="410"/>
+  <rect class="systemnode node" x="1320" y="365" width="840" height="90"/>
+  <text class="body" x="1740" y="399"><tspan x="1740">Tampilkan data draf, pembuat, verifikator hukum,</tspan><tspan x="1740" dy="27">dan tombol Buka Berita Acara bila tersedia</tspan></text>
+
+  <path class="flow" d="M1320 410 H960 V585 H790"/>
+  <rect class="adminnode node" x="170" y="535" width="620" height="100"/>
+  <text class="body" x="480" y="570"><tspan x="480">Tinjau isi dokumen, catatan legal,</tspan><tspan x="480" dy="27">dan Berita Acara dari Tim Hukum</tspan></text>
+  <path class="flow" d="M480 635 V665"/>
+  <polygon class="decision" points="480,665 620,735 480,805 340,735"/>
+  <text class="small" x="480" y="728"><tspan x="480">Keputusan</tspan><tspan x="480" dy="24">Super Admin?</tspan></text>
+
+  <!-- Approval path -->
+  <text class="branch approve" x="100" y="720">[Setujui]</text>
+  <path class="flow" d="M340 735 H250 V870"/>
+  <rect class="adminnode node" x="80" y="870" width="340" height="100"/>
+  <text class="small" x="250" y="903"><tspan x="250">Buka modal Setujui;</tspan><tspan x="250" dy="24">isi catatan tambahan opsional</tspan></text>
+
+  <path class="flow" d="M420 920 H1270"/>
+  <rect class="approvednode node" x="1270" y="860" width="900" height="120"/>
+  <text class="body" x="1720" y="895"><tspan x="1720">Validasi status = approved dan simpan</tspan><tspan x="1720" dy="27">super_admin_id serta keterangan_tambahan;</tspan><tspan x="1720" dy="27">bersihkan alasan_penolakan</tspan></text>
+  <path class="flow" d="M1720 980 V1030"/>
+  <rect class="approvednode node" x="1270" y="1030" width="900" height="128"/>
+  <text class="body" x="1720" y="1065"><tspan x="1720">Tetapkan status persetujuan:</tspan><tspan x="1720" dy="27">MoU/PKS → aktif; TIK Kemlu dan TIK Non-Kemlu → approved</tspan><tspan x="1720" dy="27">Catatan persetujuan menjadi bahan Activity Log</tspan></text>
+  <path class="flow" d="M1720 1158 V1210"/>
+  <rect class="systemnode node" x="1270" y="1210" width="900" height="100"/>
+  <text class="body" x="1720" y="1246"><tspan x="1720">Buat Activity Log dan tampilkan pesan</tspan><tspan x="1720" dy="27">tinjauan dokumen berhasil diproses</tspan></text>
+  <path class="flow" d="M1720 1310 V1360"/>
+  <rect class="approvednode node" x="1270" y="1360" width="900" height="115"/>
+  <text class="body" x="1720" y="1396"><tspan x="1720">Dokumen berstatus disetujui / aktif;</tspan><tspan x="1720" dy="27">menjadi hasil penetapan kebijakan di sistem</tspan></text>
+  <path class="flow" d="M1720 1475 V1515"/>
+  <circle cx="1720" cy="1555" r="29" fill="#ffffff" stroke="#111827" stroke-width="4"/>
+  <circle cx="1720" cy="1555" r="19" fill="#111827"/>
+
+  <!-- Revision path: connector stays on the lane edge and runs below approval nodes -->
+  <text class="branch revise" x="705" y="720">[Revisi]</text>
+  <path class="flow" d="M620 735 H1000 V1710 H970"/>
+  <rect class="adminnode node" x="620" y="1660" width="350" height="100"/>
+  <text class="small" x="795" y="1693"><tspan x="795">Buka modal Revisi;</tspan><tspan x="795" dy="24">catatan perbaikan wajib diisi</tspan></text>
+
+  <path class="flow" d="M970 1710 H2350"/>
+  <rect class="revisionnode node" x="2350" y="1650" width="790" height="150"/>
+  <text class="body" x="2745" y="1683"><tspan x="2745">Simpan super_admin_id, status = revisi_superadmin,</tspan><tspan x="2745" dy="27">revisi_ke + 1, alasan_penolakan, dan</tspan><tspan x="2745" dy="27">riwayat revisi kronologis</tspan></text>
+  <path class="flow" d="M2745 1800 V1850"/>
+  <rect class="systemnode node" x="2350" y="1850" width="790" height="105"/>
+  <text class="body" x="2745" y="1886"><tspan x="2745">Buat Activity Log dengan catatan revisi</tspan><tspan x="2745" dy="27">dan simpan perubahan dokumen</tspan></text>
+  <path class="flow" d="M2745 1955 V2010"/>
+  <rect class="revisionnode node" x="2350" y="2010" width="790" height="100"/>
+  <text class="body" x="2745" y="2047"><tspan x="2745">Tampilkan sukses; dokumen kembali kepada</tspan><tspan x="2745" dy="27">Admin untuk diperbaiki dan diajukan ulang</tspan></text>
+  <path class="flow" d="M2745 2110 V2155"/>
+  <circle cx="2745" cy="2195" r="29" fill="#ffffff" stroke="#111827" stroke-width="4"/>
+  <circle cx="2745" cy="2195" r="19" fill="#111827"/>
+
+  <!-- Rejection path: isolated below the decision so it never crosses another branch -->
+  <text class="branch reject" x="505" y="850">[Tolak]</text>
+  <path class="flow" d="M480 805 V2380 H620"/>
+  <rect class="adminnode node" x="620" y="2330" width="350" height="100"/>
+  <text class="small" x="795" y="2363"><tspan x="795">Buka modal Tolak;</tspan><tspan x="795" dy="24">alasan penolakan wajib diisi</tspan></text>
+
+  <path class="flow" d="M970 2380 H2350"/>
+  <rect class="rejectnode node" x="2350" y="2320" width="790" height="130"/>
+  <text class="body" x="2745" y="2355"><tspan x="2745">Simpan super_admin_id dan alasan_penolakan;</tspan><tspan x="2745" dy="27">MoU/PKS → tidak aktif;</tspan><tspan x="2745" dy="27">TIK Kemlu / TIK Non-Kemlu → rejected</tspan></text>
+  <path class="flow" d="M2745 2450 V2500"/>
+  <rect class="systemnode node" x="2350" y="2500" width="790" height="100"/>
+  <text class="body" x="2745" y="2536"><tspan x="2745">Buat Activity Log penolakan dan</tspan><tspan x="2745" dy="27">tampilkan pesan tinjauan berhasil diproses</tspan></text>
+  <path class="flow" d="M2745 2600 V2640"/>
+  <circle cx="2745" cy="2680" r="29" fill="#ffffff" stroke="#111827" stroke-width="4"/>
+  <circle cx="2745" cy="2680" r="19" fill="#111827"/>
+
+  <!-- Implementation note: intentionally separate from process flows -->
+  <rect class="notenode node" x="1100" y="2780" width="2040" height="68"/>
+  <text class="foot" x="2120" y="2822"><tspan x="2120" font-weight="700">Catatan publikasi saat ini:</tspan><tspan x="2120"> Arsip User memuat seluruh MoU/PKS dan TIK dengan all(), tanpa filter status; persetujuan hanya menetapkan status, belum membatasi visibilitas arsip.</tspan></text>
+
+  <text class="foot" x="40" y="2880">Ruang lingkup: Tinjauan kebijakan oleh Super Admin atas draf berstatus pending_superadmin dari Tim Hukum.</text>
+</svg>

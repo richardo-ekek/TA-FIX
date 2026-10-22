@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="6000" height="3600" viewBox="0 0 6000 3600" role="img" aria-labelledby="title desc">
+  <title id="title">ERD Chen Portal Kebijakan — Pengelolaan Dokumen Kebijakan</title>
+  <desc id="desc">Lembar kedua ERD Chen Portal Kebijakan. Menjelaskan peran pengguna dan siklus dokumen untuk MOU PKS, TIK Kementerian Luar Negeri, serta TIK Non-Kementerian Luar Negeri.</desc>
+  <defs>
+    <style>
+      .page{fill:#fff;stroke:#1e293b;stroke-width:7}.bar{fill:#f97316;stroke:#1e293b;stroke-width:7}
+      .title{font-family:Arial,sans-serif;font-size:38px;font-weight:bold;fill:#fff;text-anchor:middle}.sub{font-family:Arial,sans-serif;font-size:19px;fill:#475569;text-anchor:middle}
+      .entity{fill:#eff6ff;stroke:#2563eb;stroke-width:5;rx:8}.log{fill:#fffbeb;stroke:#a16207;stroke-width:5;rx:8}.policy{fill:#fffbeb;stroke:#92400e;stroke-width:5;rx:8}.concept{fill:#fff7ed;stroke:#c2410c;stroke-width:5;stroke-dasharray:14 9;rx:8}
+      .name{font-family:Arial,sans-serif;font-size:25px;font-weight:bold;fill:#0f172a;text-anchor:middle;dominant-baseline:middle}.smallname{font-family:Arial,sans-serif;font-size:21px;font-weight:bold;fill:#0f172a;text-anchor:middle;dominant-baseline:middle}
+      .attr{fill:#fff;stroke:#64748b;stroke-width:3.5}.key{fill:#fff7ed;stroke:#dc2626;stroke-width:4}.a{font-family:Arial,sans-serif;font-size:18px;fill:#0f172a;text-anchor:middle;dominant-baseline:middle}.as{font-family:Arial,sans-serif;font-size:15px;fill:#0f172a;text-anchor:middle;dominant-baseline:middle}.pk{font-family:Arial,sans-serif;font-size:18px;font-weight:bold;fill:#b91c1c;text-anchor:middle;dominant-baseline:middle;text-decoration:underline}
+      .rel{fill:#fff7ed;stroke:#c2410c;stroke-width:5}.rt{font-family:Arial,sans-serif;font-size:16px;font-weight:bold;fill:#7c2d12;text-anchor:middle;dominant-baseline:middle}.rs{font-family:Arial,sans-serif;font-size:14px;font-weight:bold;fill:#7c2d12;text-anchor:middle;dominant-baseline:middle}
+      .line{fill:none;stroke:#334155;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round}.logical{fill:none;stroke:#7e22ce;stroke-width:4.5;stroke-dasharray:14 9;stroke-linecap:round;stroke-linejoin:round}.aline{fill:none;stroke:#94a3b8;stroke-width:3;stroke-linecap:round}
+      .card{font-family:Arial,sans-serif;font-size:18px;font-weight:bold;fill:#0f172a}.lcard{font-family:Arial,sans-serif;font-size:17px;font-weight:bold;fill:#6b21a8}.legend{font-family:Arial,sans-serif;font-size:17px;fill:#334155}.note{fill:#fffbeb;stroke:#d97706;stroke-width:3.5;rx:12}.warn{fill:#fff1f2;stroke:#e11d48;stroke-width:3.5;rx:12}.nt{font-family:Arial,sans-serif;font-size:17px;fill:#78350f}.wt{font-family:Arial,sans-serif;font-size:17px;fill:#9f1239}.isa{fill:#ecfeff;stroke:#0f766e;stroke-width:5}.isat{font-family:Arial,sans-serif;font-size:17px;font-weight:bold;fill:#115e59;text-anchor:middle}
+    </style>
+  </defs>
+  <rect class="page" x="18" y="18" width="5964" height="3564"/>
+  <rect class="bar" x="18" y="18" width="5964" height="105"/>
+  <text class="title" x="3000" y="82">ERD PORTAL KEBIJAKAN — NOTASI CHEN</text>
+  <text class="sub" x="3000" y="165">Lembar 2 dari 2 • Pengajuan, verifikasi legalitas, tinjauan, dan publikasi dokumen kebijakan</text>
+  <rect class="entity" x="230" y="220" width="145" height="44"/><text class="legend" x="405" y="250">Entitas</text>
+  <ellipse class="attr" cx="690" cy="242" rx="88" ry="28"/><text class="legend" x="805" y="250">Atribut</text>
+  <polygon class="rel" points="1090,205 1130,242 1090,279 1050,242"/><text class="legend" x="1155" y="250">Relasi</text>
+  <line class="logical" x1="1450" y1="242" x2="1580" y2="242"/><text class="legend" x="1610" y="250">referensi logis / tanpa FK</text>
+
+  <!-- lines first -->
+  <g id="lines">
+    <!-- users to three distinct role relations -->
+    <path class="line" d="M1250 1600 L1760 920"/>
+    <path class="line" d="M2020 920 L3000 1510"/>
+    <path class="logical" d="M1250 1650 L1760 1600"/>
+    <path class="logical" d="M2020 1600 L3000 1600"/>
+    <path class="logical" d="M1250 1700 L1760 2280"/>
+    <path class="logical" d="M2020 2280 L3000 1690"/>
+    <!-- log polymorphic relation -->
+    <path class="logical" d="M1450 640 L2010 640"/>
+    <path class="logical" d="M2290 640 L3150 1510"/>
+    <!-- ISA hierarchy -->
+    <path class="line" d="M3350 1710 L3350 2050"/>
+    <path class="line" d="M3260 2180 L1550 2650"/>
+    <path class="line" d="M3350 2180 L3350 2650"/>
+    <path class="line" d="M3440 2180 L5150 2650"/>
+    <!-- attrs users -->
+    <path class="aline" d="M850 1550 L800 1360"/><path class="aline" d="M1150 1550 L1250 1360"/><path class="aline" d="M850 1750 L720 1940"/><path class="aline" d="M1100 1750 L1170 1940"/>
+    <!-- attrs log -->
+    <path class="aline" d="M1000 580 L950 420"/><path class="aline" d="M750 640 L520 700"/><path class="aline" d="M1150 700 L1250 880"/>
+    <!-- attrs doc group -->
+    <path class="aline" d="M3250 1510 L3200 1330"/><path class="aline" d="M3500 1510 L3750 1360"/>
+    <!-- attrs mou -->
+    <path class="aline" d="M1400 2650 L1350 2460"/><path class="aline" d="M1200 2700 L950 2780"/><path class="aline" d="M1500 2750 L1450 2930"/><path class="aline" d="M1750 2700 L2000 2820"/>
+    <!-- attrs tik kemlu -->
+    <path class="aline" d="M3200 2650 L3150 2460"/><path class="aline" d="M3500 2700 L3850 2820"/><path class="aline" d="M3350 2750 L3350 2950"/>
+    <!-- attrs tik non -->
+    <path class="aline" d="M5000 2650 L4950 2460"/><path class="aline" d="M4900 2700 L4600 2830"/><path class="aline" d="M5150 2750 L5150 2950"/>
+  </g>
+
+  <!-- top reference entities -->
+  <g id="log-alias">
+    <rect class="log" x="750" y="580" width="700" height="120"/><text class="name" x="1100" y="640">ACTIVITY_LOGS*</text>
+    <ellipse class="key" cx="950" cy="380" rx="115" ry="38"/><text class="pk" x="950" y="380">id (PK)</text>
+    <ellipse class="attr" cx="500" cy="700" rx="190" ry="44"/><text class="as" x="500" y="693">model_type + model_id</text><text class="as" x="500" y="715">target polimorfik‡</text>
+    <ellipse class="attr" cx="1250" cy="900" rx="190" ry="44"/><text class="as" x="1250" y="893">kategori, perihal,</text><text class="as" x="1250" y="915">snapshot, catatan</text>
+  </g>
+  <g id="users-alias">
+    <rect class="entity" x="700" y="1550" width="550" height="200"/><text class="name" x="975" y="1618">USERS*</text><text class="as" x="975" y="1650">entitas yang sama dengan</text><text class="as" x="975" y="1672">Lembar 1</text>
+    <ellipse class="key" cx="800" cy="1320" rx="115" ry="38"/><text class="pk" x="800" y="1320">id (PK)</text>
+    <ellipse class="attr" cx="1250" cy="1320" rx="180" ry="42"/><text class="as" x="1250" y="1313">role: admin, tim_hukum,</text><text class="as" x="1250" y="1335">super_admin</text>
+    <ellipse class="attr" cx="720" cy="1980" rx="160" ry="40"/><text class="as" x="720" y="1980">akun pengguna</text>
+    <ellipse class="attr" cx="1170" cy="1980" rx="160" ry="40"/><text class="as" x="1170" y="1980">identitas akun</text>
+  </g>
+
+  <!-- policy abstraction and ISA -->
+  <g id="policy-group">
+    <rect class="concept" x="3000" y="1510" width="700" height="200"/><text class="name" x="3350" y="1580">DOKUMEN KEBIJAKAN*</text><text class="as" x="3350" y="1614">abstraksi untuk tiga tabel fisik</text><text class="as" x="3350" y="1636">MOU_PKS • TIK_KEMLU • TIK_NON_KEMLU</text>
+    <ellipse class="attr" cx="3200" cy="1290" rx="170" ry="40"/><text class="as" x="3200" y="1290">status, revisi, riwayat</text>
+    <ellipse class="attr" cx="3750" cy="1320" rx="200" ry="42"/><text class="as" x="3750" y="1313">file_berita_acara,</text><text class="as" x="3750" y="1335">views, timestamps</text>
+    <polygon class="isa" points="3350,2050 3260,2180 3440,2180"/><text class="isat" x="3350" y="2162">ISA</text>
+  </g>
+
+  <!-- physical policy types -->
+  <g id="mou">
+    <rect class="policy" x="1200" y="2650" width="700" height="100"/><text class="name" x="1550" y="2700">MOU_PKS</text>
+    <ellipse class="key" cx="1350" cy="2420" rx="115" ry="38"/><text class="pk" x="1350" y="2420">id (PK)</text>
+    <ellipse class="attr" cx="930" cy="2780" rx="220" ry="46"/><text class="as" x="930" y="2773">jenis, perihal, satker_kemlu,</text><text class="as" x="930" y="2795">instansi_external</text>
+    <ellipse class="attr" cx="1450" cy="2970" rx="245" ry="48"/><text class="as" x="1450" y="2963">tanggal_disahkan, tanggal_berakhir,</text><text class="as" x="1450" y="2985">tautan, keterangan</text>
+    <ellipse class="attr" cx="2000" cy="2870" rx="195" ry="44"/><text class="as" x="2000" y="2863">status, berkas,</text><text class="as" x="2000" y="2885">revisi</text>
+  </g>
+  <g id="tik-kemlu">
+    <rect class="policy" x="3000" y="2650" width="700" height="100"/><text class="name" x="3350" y="2700">TIK_KEMLU</text>
+    <ellipse class="key" cx="3150" cy="2420" rx="115" ry="38"/><text class="pk" x="3150" y="2420">id (PK)</text>
+    <ellipse class="attr" cx="3850" cy="2870" rx="245" ry="48"/><text class="as" x="3850" y="2863">jenis_kebijakan, nomor_kebijakan,</text><text class="as" x="3850" y="2885">perihal, tahun, tautan</text>
+    <ellipse class="attr" cx="3350" cy="2990" rx="250" ry="48"/><text class="as" x="3350" y="2983">status, alasan_penolakan,</text><text class="as" x="3350" y="3005">keterangan, berkas/revisi</text>
+  </g>
+  <g id="tik-non">
+    <rect class="policy" x="4800" y="2650" width="700" height="100"/><text class="smallname" x="5150" y="2700">TIK_NON_KEMLU</text>
+    <ellipse class="key" cx="4950" cy="2420" rx="115" ry="38"/><text class="pk" x="4950" y="2420">id (PK)</text>
+    <ellipse class="attr" cx="4600" cy="2880" rx="230" ry="46"/><text class="as" x="4600" y="2873">jenis_kebijakan, nomor,</text><text class="as" x="4600" y="2895">perihal, instansi</text>
+    <ellipse class="attr" cx="5150" cy="2990" rx="250" ry="48"/><text class="as" x="5150" y="2983">tahun, tautan, status,</text><text class="as" x="5150" y="3005">keterangan, berkas/revisi</text>
+  </g>
+
+  <!-- relation diamonds -->
+  <g id="relations">
+    <polygon class="rel" points="1890,830 2020,920 1890,1010 1760,920"/><text class="rs" x="1890" y="912">MENGAJUKAN</text><text class="rs" x="1890" y="933">Admin</text>
+    <text class="card" x="1270" y="1570">0..1</text><text class="card" x="2940" y="1495">0..N</text>
+    <polygon class="rel" points="1890,1510 2020,1600 1890,1690 1760,1600"/><text class="rs" x="1890" y="1592">MEMVERIFIKASI</text><text class="rs" x="1890" y="1613">Tim Hukum</text>
+    <text class="lcard" x="1270" y="1630">0..1</text><text class="lcard" x="2940" y="1585">0..N</text>
+    <polygon class="rel" points="1890,2190 2020,2280 1890,2370 1760,2280"/><text class="rs" x="1890" y="2272">MENINJAU /</text><text class="rs" x="1890" y="2293">PUBLIKASI · SA</text>
+    <text class="lcard" x="1270" y="1690">0..1</text><text class="lcard" x="2940" y="1675">0..N</text>
+    <polygon class="rel" points="2150,550 2290,640 2150,730 2010,640"/><text class="rs" x="2150" y="632">MENCATAT</text><text class="rs" x="2150" y="653">OBJEK‡</text>
+    <text class="lcard" x="1480" y="620">1</text><text class="lcard" x="3090" y="1495">0..N</text>
+  </g>
+
+  <!-- notes -->
+  <rect class="warn" x="260" y="3180" width="2700" height="260"/>
+  <text class="wt" x="310" y="3250">* USERS dan ACTIVITY_LOGS ditampilkan kembali hanya sebagai alias visual agar relasi tidak saling menyilang.</text>
+  <text class="wt" x="310" y="3310">Keduanya tetap entitas/tabel yang sama seperti pada Lembar 1, bukan tabel duplikat.</text>
+  <text class="wt" x="310" y="3370">Relasi Tim Hukum dan Super Admin bersifat logis karena tim_hukum_id serta super_admin_id belum didefinisikan sebagai FK.</text>
+  <rect class="note" x="3180" y="3180" width="2550" height="260"/>
+  <text class="nt" x="3230" y="3250">DOKUMEN KEBIJAKAN* bukan tabel baru; simbol ISA mengelompokkan tiga tabel dokumen fisik.</text>
+  <text class="nt" x="3230" y="3310">Admin mengajukan dokumen, Tim Hukum memverifikasi legalitas, dan Super Admin meninjau atau mempublikasikan.</text>
+  <text class="nt" x="3230" y="3370">‡ Activity log menggunakan referensi polimorfik model_type + model_id, sehingga tidak memiliki FK langsung ke tiga tabel tersebut.</text>
+</svg>

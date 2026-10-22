@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3100" height="2280" viewBox="0 0 3100 2280" role="img" aria-labelledby="diagram-title diagram-desc">
+  <title id="diagram-title">Activity Diagram — Pengajuan dan Revisi Draf Kebijakan oleh Admin</title>
+  <desc id="diagram-desc">Diagram aktivitas Admin dalam membuat draf MoU atau PKS, TIK Kemlu, atau TIK Non-Kemlu; mengajukannya ke Tim Hukum; melihat catatan revisi; lalu memperbaiki dan mengajukan ulang dokumen.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#1e293b"/>
+    </marker>
+    <style>
+      .frame { fill:#ffffff; stroke:#1e293b; stroke-width:3; }
+      .titlebar { fill:#f97316; stroke:#1e293b; stroke-width:3; }
+      .lanehead { fill:#f8fafc; stroke:#1e293b; stroke-width:3; }
+      .adminlane { fill:#fffdf9; stroke:#cbd5e1; stroke-width:2; }
+      .systemlane { fill:#f8fbff; stroke:#cbd5e1; stroke-width:2; }
+      .adminnode { fill:#ffffff; stroke:#475569; stroke-width:3; }
+      .systemnode { fill:#eff6ff; stroke:#2563eb; stroke-width:3; }
+      .reviewnode { fill:#f5f3ff; stroke:#7c3aed; stroke-width:3; }
+      .successnode { fill:#ecfdf5; stroke:#059669; stroke-width:3; }
+      .notenode { fill:#fffbeb; stroke:#d97706; stroke-width:2.5; }
+      .node { rx:16; ry:16; }
+      .decision { fill:#ffffff; stroke:#334155; stroke-width:3; }
+      .flow { fill:none; stroke:#1e293b; stroke-width:3.5; marker-end:url(#arrow); stroke-linejoin:round; stroke-linecap:round; }
+      .loop { fill:none; stroke:#2563eb; stroke-width:3.5; stroke-dasharray:12 10; marker-end:url(#arrow); stroke-linejoin:round; stroke-linecap:round; }
+      .title { font-family:Arial, Helvetica, sans-serif; font-size:36px; font-weight:700; fill:#ffffff; text-anchor:middle; }
+      .lane-title { font-family:Arial, Helvetica, sans-serif; font-size:31px; font-weight:700; fill:#0f172a; text-anchor:middle; }
+      .body { font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:600; fill:#0f172a; text-anchor:middle; }
+      .small { font-family:Arial, Helvetica, sans-serif; font-size:19px; font-weight:600; fill:#0f172a; text-anchor:middle; }
+      .tiny { font-family:Arial, Helvetica, sans-serif; font-size:17px; font-weight:600; fill:#0f172a; text-anchor:middle; }
+      .branch { font-family:Arial, Helvetica, sans-serif; font-size:19px; font-weight:700; }
+      .yes { fill:#047857; }
+      .no { fill:#be123c; }
+      .foot { font-family:Arial, Helvetica, sans-serif; font-size:17px; fill:#334155; }
+    </style>
+  </defs>
+
+  <!-- Page and vertical swimlanes -->
+  <rect class="frame" x="15" y="15" width="3070" height="2250"/>
+  <rect class="titlebar" x="15" y="15" width="3070" height="88"/>
+  <text class="title" x="1550" y="72">ACTIVITY DIAGRAM — PENGAJUAN &amp; REVISI DRAF KEBIJAKAN OLEH ADMIN</text>
+  <rect class="lanehead" x="15" y="103" width="1000" height="64"/>
+  <rect class="lanehead" x="1015" y="103" width="2070" height="64"/>
+  <text class="lane-title" x="515" y="144">Admin / Super Admin</text>
+  <text class="lane-title" x="2050" y="144">Sistem</text>
+  <rect class="adminlane" x="15" y="167" width="1000" height="2010"/>
+  <rect class="systemlane" x="1015" y="167" width="2070" height="2010"/>
+
+  <!-- Initial submission -->
+  <circle cx="105" cy="245" r="22" fill="#111827"/>
+  <line class="flow" x1="127" y1="245" x2="175" y2="245"/>
+  <rect class="adminnode node" x="180" y="198" width="560" height="94"/>
+  <text class="body" x="460" y="234"><tspan x="460">Akses dashboard Admin</tspan><tspan x="460" dy="27">menu Kelola Kebijakan</tspan></text>
+
+  <line class="flow" x1="740" y1="245" x2="1350" y2="245"/>
+  <rect class="systemnode node" x="1350" y="198" width="700" height="94"/>
+  <text class="body" x="1700" y="234"><tspan x="1700">Tampilkan tiga tab pengajuan dan</tspan><tspan x="1700" dy="27">riwayat status dokumen</tspan></text>
+
+  <path class="flow" d="M1350 245 H900 V450 H750"/>
+  <rect class="adminnode node" x="130" y="355" width="620" height="190"/>
+  <text class="small" x="440" y="388"><tspan x="440">Pilih kategori dan isi draf:</tspan><tspan x="440" dy="28">• MoU/PKS — jenis, perihal, satker, mitra,</tspan><tspan x="440" dy="24">  tanggal, dan keterangan</tspan><tspan x="440" dy="28">• TIK Kemlu — jenis, nomor, tahun, perihal, tautan</tspan><tspan x="440" dy="28">• TIK Non-Kemlu — data TIK + instansi</tspan></text>
+  <path class="flow" d="M440 545 V610"/>
+  <rect class="adminnode node" x="200" y="610" width="480" height="86"/>
+  <text class="body" x="440" y="663">Klik Simpan / Ajukan draf</text>
+
+  <path class="flow" d="M680 653 H1350"/>
+  <rect class="systemnode node" x="1350" y="590" width="700" height="126"/>
+  <text class="body" x="1700" y="625"><tspan x="1700">Panggil handler sesuai tab dan buat draf</tspan><tspan x="1700" dy="27">dengan admin_id, status = pending_hukum,</tspan><tspan x="1700" dy="27">dan revisi_ke = 0</tspan></text>
+  <path class="flow" d="M1700 716 V760"/>
+  <rect class="reviewnode node" x="1350" y="760" width="700" height="96"/>
+  <text class="body" x="1700" y="795"><tspan x="1700">Tampilkan sukses dan masukkan draf ke</tspan><tspan x="1700" dy="27">antrean Tim Hukum (pending_hukum)</tspan></text>
+  <path class="flow" d="M1700 856 V895"/>
+  <rect class="reviewnode node" x="1350" y="895" width="700" height="98"/>
+  <text class="body" x="1700" y="931"><tspan x="1700">Reviewer memeriksa dokumen;</tspan><tspan x="1700" dy="27">hasilnya diteruskan atau diberi catatan revisi</tspan></text>
+  <path class="flow" d="M1700 993 V1035"/>
+  <polygon class="decision" points="1700,1035 1840,1105 1700,1175 1560,1105"/>
+  <text class="small" x="1700" y="1098"><tspan x="1700">Dokumen dikembalikan</tspan><tspan x="1700" dy="24">untuk revisi?</tspan></text>
+
+  <!-- No-revision outcome -->
+  <text class="branch no" x="1875" y="1086">[Tidak]</text>
+  <path class="flow" d="M1840 1105 H2190"/>
+  <rect class="successnode node" x="2190" y="1055" width="600" height="100"/>
+  <text class="body" x="2490" y="1092"><tspan x="2490">Lanjut ke proses berikutnya</tspan><tspan x="2490" dy="27">(pending_superadmin / hasil akhir)</tspan></text>
+  <path class="flow" d="M2490 1155 V1205"/>
+  <circle cx="2490" cy="1245" r="29" fill="#ffffff" stroke="#111827" stroke-width="4"/>
+  <circle cx="2490" cy="1245" r="19" fill="#111827"/>
+
+  <!-- Revision loop -->
+  <text class="branch yes" x="1070" y="1086">[Ya]</text>
+  <path class="flow" d="M1560 1105 H930 V1265 H750"/>
+  <rect class="adminnode node" x="130" y="1210" width="620" height="110"/>
+  <text class="body" x="440" y="1248"><tspan x="440">Buka riwayat pengajuan dan baca catatan</tspan><tspan x="440" dy="27">revisi_hukum atau revisi_superadmin</tspan></text>
+  <path class="flow" d="M440 1320 V1370"/>
+  <rect class="adminnode node" x="200" y="1370" width="480" height="86"/>
+  <text class="body" x="440" y="1404"><tspan x="440">Klik Perbaiki &amp;</tspan><tspan x="440" dy="27">Ajukan Ulang</tspan></text>
+  <path class="flow" d="M440 1456 V1510"/>
+  <rect class="adminnode node" x="120" y="1510" width="640" height="150"/>
+  <text class="small" x="440" y="1544"><tspan x="440">Form revisi memuat data kategori sebelumnya.</tspan><tspan x="440" dy="28">Perbarui isian yang diperlukan sesuai catatan:</tspan><tspan x="440" dy="25">MoU/PKS, TIK Kemlu, atau TIK Non-Kemlu;</tspan><tspan x="440" dy="25">hanya field kategori aktif yang dikirim.</tspan></text>
+  <path class="flow" d="M440 1660 V1720"/>
+  <rect class="adminnode node" x="200" y="1720" width="480" height="86"/>
+  <text class="body" x="440" y="1773">Simpan &amp; Ajukan Ulang</text>
+
+  <path class="flow" d="M680 1763 H1350"/>
+  <rect class="systemnode node" x="1350" y="1700" width="700" height="126"/>
+  <text class="body" x="1700" y="1735"><tspan x="1700">Temukan record berdasarkan kategori dan ID;</tspan><tspan x="1700" dy="27">perbarui draf, set pending_hukum,</tspan><tspan x="1700" dy="27">dan kosongkan alasan_penolakan</tspan></text>
+  <path class="flow" d="M1700 1826 V1870"/>
+  <rect class="successnode node" x="1350" y="1870" width="700" height="110"/>
+  <text class="body" x="1700" y="1907"><tspan x="1700">Tampilkan pesan sukses; revisi_ke dan</tspan><tspan x="1700" dy="27">riwayat_revisi tetap tersimpan</tspan></text>
+
+  <!-- Isolated return connector, placed on far right so no path overlaps nodes -->
+  <path class="loop" d="M2050 1925 H2700 V808 H2050"/>
+  <text class="branch" x="2720" y="1360" fill="#2563eb">Kembali ke antrean review</text>
+
+  <!-- Implementation note -->
+  <rect class="notenode node" x="2190" y="1450" width="700" height="190"/>
+  <text class="foot" x="2540" y="1483"><tspan x="2540" font-weight="700">Catatan implementasi:</tspan><tspan x="2540" dy="25">Pengajuan awal selalu disetel ke pending_hukum</tspan><tspan x="2540" dy="23">oleh controller, termasuk saat form MoU/PKS</tspan><tspan x="2540" dy="23">memiliki pilihan Status. Revisi memperbarui</tspan><tspan x="2540" dy="23">record lama, bukan membuat record baru.</tspan></text>
+
+  <!-- Footer -->
+  <text class="foot" x="40" y="2230">Ruang lingkup: pengajuan dan pengajuan ulang oleh Admin. Pemeriksaan Tim Hukum serta keputusan akhir Super Admin ditunjukkan hanya sebagai pemicu atau kelanjutan proses.</text>
+</svg>
